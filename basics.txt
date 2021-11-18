@@ -1,0 +1,140 @@
+game designe ideas:
+	general premis: obtain the three magical orbs
+	-	what are the chalenges / obsticles:
+		-	enemies
+		-	puzzles
+	-	collecting the first objects increses enemy attacks
+	-	puzzle ideas:
+		-	lock challeng
+		-	presherplates on ice
+	-	emeys:
+		-	slime
+			-	weaker enemies whith wider abilities
+		-	bear
+			-	tank
+		-	goblins
+			-	basic
+		-	raders
+			-	faster enemies
+		-	skelotins
+			-	high hp
+			-	slime has no efect on 
+			-	low armor
+			-	mediam attack
+			-	mediam attack speed
+	-	class:
+		-	kight
+		-	wizzard
+		-	rouge
+	-	enviroments:
+		-	forest, green orb
+		-	artic, blue orb
+		-	desert, red orb
+	-	main stats:
+		-	lv
+		-	hp
+		-	exp
+	-	 tools
+		-	keys
+		-	wepons
+		-	healing items/ exp gaining items
+
+The game consists of the primary character gathering three magical objects, and then retrning to a home location.
+
+the player is presented with an overhead of a forest, with a desired object shown on the map. antagonists are also
+shown on the map, but they cant initaly see the player. tools that are necessasary to aquire the object are also
+visible on the map.
+
+		-	how do we navigate the map?
+		-	how do the antagonists notice us and persue? or how do we hide from them?
+
+player must colect any necessasary tool, along with protective tools, and proceed to the object without being killed
+by the antagonist.
+
+		-	what happens when interacting with an antagonist?
+		-	switch to side-by-side view for combat?
+
+upon retrieving the object, player a choice of direction to persue the next object. a new map is displayed for the next
+layer including the next object.
+
+player character -- object structure
+	speed
+	defens
+	power
+	health
+	lives
+	x, y
+	imagename
+	inventory = []
+	move()
+	pick up()
+	fight()
+
+antagonist chatacters
+	speed
+	defens
+	power
+	health
+	imagename
+	inventory = []
+	x, y
+
+tools object
+	type - key, wepon, energy or health
+	power
+	desciption
+	imagename
+	x, y
+
+goals
+	x, y
+	imagename
+	description
+
+program flow
+	--	introduction
+		 <p id="intro">
+		 start function-> hide intro paragraph
+		 
+	--	class selection
+		 div with ID with select tag, with option for "char1" "char2"
+	--	level designe
+	--	main loop
+		--	scene
+		--	player renduring
+		--	antagonist renduring
+		--	tools and goal renduring
+		--	checking inputs for movement
+		--	checking for interaction
+		--	checking for results
+		--	next step
+			--	action
+			--	next level
+			--	reset
+
+logistics
+	--	main server
+		--	html
+		--	css
+		--	Javascript
+			--	logic
+			--	object
+		--	images folder
+		--	data process - JSON files?
+
+interactions
+		bear 		slime		robber		skeleton
+	
+	kight
+	wizzard
+	rouge
+itmes
+	name	type
+	sword		weapon
+	knife		weapon
+	firstaid	healing
+	cake		healing
+	key			key
+	fire		orb
+	ice			orb
+	earth		orb

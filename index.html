@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Game</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="logi.css">
+	<link href='https://fonts.googleapis.com/css?family=Arbutus' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+	<script src="logic.js">
+	</script>
+	<script src="objects.js">
+	</script>
+	<style>
+	body  {
+	 overflow-y: hidden;
+}
+	</style>
+</head>
+<body>
+
+	
+	<img src="images/bkimgty.png" class="bkimage">
+	
+	<p id="intro"> The Game of Orbs
+		<button class="btnstart" onclick="start()">Start</button>
+	</p>
+
+	
+	
+	<div id="character" style="display:none">
+		<select id="char" onchange="setChar(this.value)">
+			<option value="char1">Knight</option>
+			<option value="char2">Wizard</option>
+			<option value="char3">Rogue</option>
+		</select>
+		
+		<p class="chartitle">Select Your Character </p>
+		<img src="images/wiza.png" class="wiza">
+		<img src="images/knight.png" class="knight">
+		<img src="images/rogue.png" class="rogue">
+		
+		
+		<button onclick="main()" class="btnplay">Play</button>
+		
+		<img src="images/wizast.PNG" class="wizast">
+		<img src="images/knightst.PNG" class="knightst">
+		<img src="images/roguest.PNG" class="roguest">
+		
+		<p class="knightnm">Knight</P>
+		<p class="wizanm">Wizard</P>
+		<p class="roguenm">Rogue</P>
+		
+	</div>
+	
+	<canvas id="game"></canvas>
+	
+
+	
+	<div id="places" style="display:none">
+		<p class="plctitle"> Select starting point</p>
+		<select id="place" onchange="setplace(this.value)">
+			<option value="desert">Desert</option>
+			<option value="forest">Forest</option>
+			<option value="artic">Artic</option>
+		</select>
+	</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{"Player":
+	[
+		{"type": "Knight", "speed": "2", "power": "3", "defens": "3", "maxhp":"100", "inventory1" : "tool ('Sword', 'Weapon', 10, false, 'grey')", "inventory2" : "tool ('sheild', 'Armor', 5, false, 'grey')", "inventory3" : "tool ('armor', 'Armor', 6, false, 'grey')"},
+		{"type": "Wizard", "speed": "3", "power": "2", "defens": "2", "maxhp":"75", "inventory1":"tool ('staff', 'Weapon', 7, false, 'grey')", "inventory2":"tool ('spell book', 'Magic', false, false, 'grey')", "inventory3":"tool ('cloak', 'Armor', 4, false, 'grey')"},
+		{"type": "Rogue", "speed": "4", "power": "2", "defens": "1", "maxhp":"50", "inventory1":"tool ('dagger', 'Weapon', 3, false, 'grey')", "inventory2":"tool ('dagger', 'Weapon', 3, false, 'grey')", "inventory3":"tool ('cloak', 'Armor', 1, false, 'black')"}
+	]
+}
