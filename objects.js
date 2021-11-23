@@ -16,27 +16,12 @@ var game = {
 	},
 	addenemie : function(){
 		var entype = Math.floor(Math.random() * 3);
-		if (entype == 0){
-			atk = 20;
-			def = 16;
-			speed = 3;
-			hp = 300;
-		} else if (entype == 1){
-			atk = 1;
-			def = 1;
-			speed = 1;
-			hp = 100;
-		} else if (entype == 2){
-			atk = 10;
-			def = 5;
-			speed = 2;
-			hp = 20;
-		} else if (entype == 3){
-			atk = 10;
-			def = -100;
-			speed = 0.5;
-			hp = 300;
-		}
+		atk = enemieslist[entype].power;
+		def = enemieslist[entype].defens;
+		speed = enemieslist[entype].speed;
+		hp = enemieslist[entype].maxhp;
+		xcolnum = enemieslist[entype].xcolnum;
+		ycolnum = enemieslist[entype].ycolnum;
 		x = Math.floor(Math.random() * (this.canvas.width - 20));
 		y = Math.floor(Math.random() * (this.canvas.height - 20));
 		newen = new Enemis();
@@ -46,6 +31,8 @@ var game = {
 		newen.power = atk;
 		newen.defens = def;
 		newen.speed = speed;
+		newen.xcolnum = 67 * xcolnum;
+		newen.ycolnum = 67 * ycolnum;
 		return newen
 	}
 }
@@ -98,7 +85,7 @@ class Player extends Character {
 	}
 }
 class Enemis extends Character {
-	constructor(name, imagename){
+	constructor(name, imagename, xcolnum, ycolnum){
 		super(name, imagename);
 		this.health = 20;
 		this.maxhp = this.health;
@@ -106,15 +93,16 @@ class Enemis extends Character {
 		this.maxframs = 100;
 		this.frams = this.maxframs;
 		this.speed = 1;
+		this.xcolnum = xcolnum;
+		this.ycolnum = ycolnum;
 	}
 	update(){
-		game.ctx.fillStyle = "red";
 		if (!this.incombat){
 			this.move();
 		} else {
 			this.cframe += 1;
 		}
-		super.update();
+		game.ctx.drawImage(ee, this.xcolnum, this.ycolnum, 67, 67, this.x, this.y, 32, 32);
 	}
 	move(){
 		if (this.distance()){
@@ -213,8 +201,8 @@ class Boss extends Character {
 		super(name, imagename);
 	}
 }
-class tool{
-	constructor(name, type, power, healing, color){
+class Tool{
+	constructor(name, type, power, healing, color, xcolnum, ycolnum){
 		this.name = name;
 		this.type = type;
 		this.power = power;
@@ -222,10 +210,13 @@ class tool{
 		this.color = color;
 		this.x = Math.floor(Math.random() * (game.canvas.width - 50));
 		this.y = Math.floor(Math.random() * (game.canvas.height - 50));
+		this.xcolnum = xcolnum * 32;
+		this.ycolnum = ycolnum * 32;
 	}
 	update(){
-		game.ctx.fillStyle = "grey";
-		game.ctx.fillRect(this.x, this.y, 20, 20);
+		game.ctx.drawImage(ss, this.xcolnum, this.ycolnum, 32, 32, this.x, this.y, 16, 16);
+		//game.ctx.fillStyle = "grey";
+		//game.ctx.fillRect(this.x, this.y, 20, 20);
 	}
 }
 //characters

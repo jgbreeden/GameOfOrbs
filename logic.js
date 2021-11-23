@@ -1,11 +1,18 @@
 var keysdown = {}
 let player = {}
+var ss = document.createElement("img");
+var ee = document.createElement("img");
+var toolset = [];
+var enemieslist = [];
 function start(){
 	document.getElementById("places").style.display = "block";
 	document.getElementById("intro").style.display = "none";
 	document.getElementById("character").style.display = "block";
-	
-	
+	ss.src = "images/items.gif";
+	ee.src = "images/enemies.png";
+	console.log(typeof(ss));
+	getData("tools.json", toolset);
+	getData("enemies.json", enemieslist);
 }
 function setChar(chara){
 	if (chara == "char1"){
@@ -16,7 +23,6 @@ function setChar(chara){
 		console.log("Rogue stats");
 	}
 }
-
 function setplace(plc){
 	if (plc == "plc1"){
 		console.log("Desert");
@@ -26,7 +32,6 @@ function setplace(plc){
 		console.log("Artic");
 	}
 }
-
 function main() {
 	addEventListener("keydown", function (e) {
 		keysdown[e.keyCode] = true;
@@ -48,9 +53,9 @@ function main() {
 		player.defens = 3;
 		player.maxhp = 50;
 		player.health = 50;
-		player.inventory.push(new tool ("Sword", "Weapon", 10, false, "grey"));
-		player.inventory.push(new tool ("sheild", "Armor", 5, false, "grey"));
-		player.inventory.push(new tool ("armor", "Armor", 6, false, "grey"));
+		player.inventory.push(new Tool ("Sword", "Weapon", 10, false, "grey"));
+		player.inventory.push(new Tool ("sheild", "Armor", 5, false, "grey"));
+		player.inventory.push(new Tool ("armor", "Armor", 6, false, "grey"));
 	} else if (valu == "char2"){
 		console.log("Wizard");
 		player.speed = 3;
@@ -58,9 +63,9 @@ function main() {
 		player.defens = 2;
 		player.maxhp = 50;
 		player.health = 50;
-		player.inventory.push(new tool ("staff", "Weapon", 7, false, "grey"));
-		player.inventory.push(new tool ("spell book", "Magic", false, false, "grey"));
-		player.inventory.push(new tool ("cloak", "Armor", 4, false, "grey"));
+		player.inventory.push(new Tool ("staff", "Weapon", 7, false, "grey"));
+		player.inventory.push(new Tool ("spell book", "Magic", false, false, "grey"));
+		player.inventory.push(new Tool ("cloak", "Armor", 4, false, "grey"));
 	} else if (valu == "char3"){
 		console.log("Rogue");
 		player.speed = 4;
@@ -68,9 +73,9 @@ function main() {
 		player.defens = 1;
 		player.maxhp = 50;
 		player.health = 50;
-		player.inventory.push(new tool ("dagger", "Weapon", 3, false, "grey"));
-		player.inventory.push(new tool ("dagger", "Weapon", 3, false, "grey"));
-		player.inventory.push(new tool ("cloak", "Armor", 1, false, "black"));
+		player.inventory.push(new Tool ("dagger", "Weapon", 3, false, "grey"));
+		player.inventory.push(new Tool ("dagger", "Weapon", 3, false, "grey"));
+		player.inventory.push(new Tool ("cloak", "Armor", 1, false, "black"));
 	}
 	for (j = 0; j < 10; j++){
 		addtool();
@@ -192,9 +197,9 @@ function reset1(){
 		player.defens = 3;
 		player.maxhp = 100;
 		player.health = 100;
-		player.inventory.push(new tool ("Sword", "Weapon", 10, false, "grey"));
-		player.inventory.push(new tool ("sheild", "Armor", 5, false, "grey"));
-		player.inventory.push(new tool ("armor", "Armor", 6, false, "grey"));
+		player.inventory.push(new Tool ("sword", "Weapon", 10, false, "grey"));
+		player.inventory.push(new Tool ("sheild", "Armor", 5, false, "grey"));
+		player.inventory.push(new Tool ("armor", "Armor", 6, false, "grey"));
 	} else if (valu == "char2"){
 		console.log("Wizard");
 		player.speed = 3;
@@ -202,9 +207,9 @@ function reset1(){
 		player.defens = 2;
 		player.maxhp = 75;
 		player.health = 75;
-		player.inventory.push(new tool ("staff", "Weapon", 7, false, "grey"));
-		player.inventory.push(new tool ("spell book", "Magic", false, false, "grey"));
-		player.inventory.push(new tool ("cloak", "Armor", 4, false, "grey"));
+		player.inventory.push(new Tool ("staff", "Weapon", 7, false, "grey"));
+		player.inventory.push(new Tool ("spell book", "Magic", false, false, "grey"));
+		player.inventory.push(new Tool ("cloak", "Armor", 4, false, "grey"));
 	} else if (valu == "char3"){
 		console.log("Rogue");
 		player.speed = 4;
@@ -212,9 +217,9 @@ function reset1(){
 		player.defens = 1;
 		player.maxhp = 50;
 		player.health = 50;
-		player.inventory.push(new tool ("dagger", "Weapon", 3, false, "grey"));
-		player.inventory.push(new tool ("dagger", "Weapon", 3, false, "grey"));
-		player.inventory.push(new tool ("cloak", "Armor", 1, false, "black"));
+		player.inventory.push(new Tool ("dagger", "Weapon", 3, false, "grey"));
+		player.inventory.push(new Tool ("dagger", "Weapon", 3, false, "grey"));
+		player.inventory.push(new Tool ("cloak", "Armor", 1, false, "black"));
 	}
 	player.x = 0;
 	player.y = 0;
@@ -228,32 +233,24 @@ function adden (){
 }
 function addtool (){
 	var tole = Math.floor(Math.random() * 11);
-	if (tole == 0){
-		game.tools.push(new tool ("Sword", "Weapon", 10, false, "grey"));
-	} else if (tole == 1){
-		game.tools.push(new tool ("sheild", "Armor", 5, false, "grey"));
-	} else if (tole == 2){
-		game.tools.push(new tool ("armor", "Armor", 6, false, "grey"));
-	} else if (tole == 3){
-		game.tools.push(new tool ("staff", "Weapon", 7, false, "grey"));
-	} else if (tole == 4){
-		game.tools.push(new tool ("spell book", "Magic", false, false, "grey"));
-	} else if (tole == 5){
-		game.tools.push(new tool ("cloak", "Armor", 4, false, "grey"));
-	} else if (tole == 6){
-		game.tools.push(new tool ("dagger", "Weapon", 3, false, "grey"));
-	} else if (tole == 7){
-		game.tools.push(new tool ("cloak", "Armor", 1, false, "black"));
-	} else if (tole == 8){
-		game.tools.push(new tool ("grape", "Heal", false, 2, "grey"));
-	} else if (tole == 9){
-		game.tools.push(new tool ("grapes", "Heal", false, 20, "grey"));
-	} else if (tole == 10){
-		game.tools.push(new tool ("baby healing postion", "Heal", false, 30, "grey"));
-	} else if (tole == 11){
-		game.tools.push(new tool ("healing postion", "Heal", false, 100, "black"));
-	}
+	console.log(toolset)
+	game.tools.push(new Tool (toolset[tole].name, toolset[tole].type, toolset[tole].power, toolset[tole].healing, toolset[tole].color, toolset[tole].xcolnum, toolset[tole].ycolnum));
 }
 function LEVE(){
 	
+}
+function getData(need, target){
+	var xhr = new XMLHttpRequest();
+
+	xhr.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200){
+			var temp = JSON.parse(this.responseText);
+			for (j = 0; j < temp.length; j++){
+				target[j] = temp[j];
+			}
+			console.log(target.length);
+		}
+	}
+	xhr.open("GET", need);
+	xhr.send();
 }

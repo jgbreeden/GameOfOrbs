@@ -1,0 +1,6 @@
+[
+	{"type": "Bear", "speed": "3", "power": "20", "defens": "16", "maxhp":"300", "xcolnum" : "0", "ycolnum" : "0"},
+	{"type": "Slime", "speed": "1", "power": "1", "defens": "1", "maxhp":"100", "xcolnum" : "0", "ycolnum" : "1"},
+	{"type": "Thief", "speed": "2", "power": "10", "defens": "5", "maxhp":"75", "xcolnum" : "1", "ycolnum" : "1"},
+	{"type": "Skeleton", "speed": "0.5", "power": "10", "defens": "-100", "maxhp":"300", "xcolnum" : "1", "ycolnum" : "0"}
+]
