@@ -8,7 +8,7 @@
 
 canvas {
 	position: absolute;
-	left: 140px;
+	left: 50px;
 	top: 130px;
 	right: 0;
 	border-style: solid;
@@ -17,7 +17,7 @@ canvas {
 	  background-image: url("images/bkmap.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
-    background-position: center; 
+    background-position: left; 
 	  background-size: 1380px 690px;
 }
 
@@ -278,19 +278,65 @@ canvas {
   margin-left: 20px;
     
 }
-/* 
-.places {
-	 position: absolute;
-	  top: 310px;
-  left: 410px;
+
+ul.a {
+  position: absolute;
+  top: 115px;
+  left: 1190px;
   right: 4px;
-  width: 200px;
-  height: 36px;
-    font-family: 'Aclonica';
-	font-size: 30px;
-	 color: #0e1a25;
-	background-color: #4d4d4d;
-	letter-spacing: 6px;
-	text-shadow: 2px 2px 3px #999999;
-	border-style: inset;
-} */
+  margin-right: 30px;
+  margin-left: 68px;
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 26px;
+  font-family: 'Aclonica';
+  font-size: 30px;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 3px #999999;
+  color: #4d0000;
+  text-align: left;
+  border: 2px solid grey;
+  border-radius: 12px;
+  background-image: linear-gradient(#00334d, #262626);
+   
+}
+
+.heart {
+		position: absolute;
+	top: 200px;
+  left: 1415px;
+  right: 4px;
+  height: 35px;
+  width: 35px;
+}
+
+.bolt {
+		position: absolute;
+	top: 390px;
+  left: 1400px;
+  right: 4px;
+  height: 60px;
+  width: 60px;
+}
+
+.sheild {
+		position: absolute;
+	top: 303px;
+  left: 1450px;
+  right: 4px;
+  height: 30px;
+  width: 30px;
+}
+
+.bar1 {
+		position: absolute;
+	top: 440px;
+  left: 1280px;
+  right: 4px;
+  height: 40px;
+  width: 170px;
+}
+
+
+
