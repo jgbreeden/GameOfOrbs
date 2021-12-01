@@ -1,6 +1,7 @@
 var game = {
 	enemies : [],
 	tools : [],
+	Boss : {},
 	init : function () {
 		this.canvas = document.getElementById("game");
 		this.canvas.width = 1200;
@@ -15,7 +16,7 @@ var game = {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	},
 	addenemie : function(){
-		var entype = Math.floor(Math.random() * 3);
+		var entype = Math.round(Math.random() * 3);
 		atk = enemieslist[entype].power;
 		def = enemieslist[entype].defens;
 		speed = enemieslist[entype].speed;
@@ -61,9 +62,8 @@ class Player extends Character {
 		this.speed = 3;
 	}
 	update(){
-		game.ctx.fillStyle = "blue";
 		this.checkkeys();
-		super.update();
+		game.ctx.drawImage(pp, this.xcolnum, this.ycolnum, 64, 64, this.x, this.y, 32, 32);
 	}
 	checkkeys(){
 		if (!this.incombat){
@@ -106,6 +106,7 @@ class Enemis extends Character {
 	}
 	move(){
 		if (this.distance()){
+			//console.log(this.speed);
 			if (player.x > this.x){
 				this.x += this.speed;
 			} else if (player.x < this.x){
@@ -116,6 +117,8 @@ class Enemis extends Character {
 			} else if (player.y < this.y){
 				this.y -= this.speed;
 			}
+			//console.log(this.x);
+			//console.log(this.y);
 		} else {
 			if (this.frams == this.maxframs){
 				this.direction();
@@ -199,6 +202,10 @@ class Enemis extends Character {
 class Boss extends Character {
 	constructor(name, imagename){
 		super(name, imagename);
+		this.inventory = {};
+	}
+	update(){
+		game.ctx.drawImage(bb, this.xcolnum, this.ycolnum, 92, 92, this.x, this.y, 46, 46);
 	}
 }
 class Tool{

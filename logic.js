@@ -2,17 +2,27 @@ var keysdown = {}
 let player = {}
 var ss = document.createElement("img");
 var ee = document.createElement("img");
+var pp = document.createElement("img");
+var bg = document.createElement("img");
+var bb = document.createElement("img");
 var toolset = [];
 var enemieslist = [];
+var playerlist = [];
+bg.src = "images/desert.png";
+var bosslist = [];
 function start(){
 	document.getElementById("places").style.display = "block";
 	document.getElementById("intro").style.display = "none";
 	document.getElementById("character").style.display = "block";
 	ss.src = "images/items.gif";
 	ee.src = "images/enemies.png";
-	console.log(typeof(ss));
+	pp.src = "images/char.png";
+	bb.src = "images/bosses.png";
+	console.log(typeof(pp));
 	getData("tools.json", toolset);
 	getData("enemies.json", enemieslist);
+	getData("player.json", playerlist);
+	getData("boss.json", bosslist);
 }
 function setChar(chara){
 	if (chara == "char1"){
@@ -24,18 +34,19 @@ function setChar(chara){
 	}
 }
 function setplace(plc){
-	if (plc == "plc1"){
-		console.log("Desert");
-	} else if (plc == "plc2"){
-		console.log("Forest");
-	} else if (plc == "plc3"){
-		console.log("Artic");
+	if (plc == "desert"){
+		bg.src = "images/desert.png";
+	} else if (plc == "forest"){
+		bg.src = "images/forest.png";
+	} else if (plc == "artic"){
+		bg.src = "images/artic.png";
 	}
 }
 function main() {
+	game.boss = new Boss;
 	addEventListener("keydown", function (e) {
 		keysdown[e.keyCode] = true;
-		console.log(keysdown);
+		//console.log(keysdown);
 	}, false);
 	addEventListener("keyup", function (e) {
 		delete keysdown[e.keyCode];
@@ -46,37 +57,49 @@ function main() {
 	player = new Player();
 	var valu = document.getElementById("char").value;
 	game.init();
+	var p = 0
 	if (valu == "char1"){
 		console.log("Knight");
-		player.speed = 2;
-		player.power = 3;
-		player.defens = 3;
-		player.maxhp = 50;
-		player.health = 50;
-		player.inventory.push(new Tool ("Sword", "Weapon", 10, false, "grey"));
-		player.inventory.push(new Tool ("sheild", "Armor", 5, false, "grey"));
-		player.inventory.push(new Tool ("armor", "Armor", 6, false, "grey"));
+		p = 0;
 	} else if (valu == "char2"){
 		console.log("Wizard");
-		player.speed = 3;
-		player.power = 2;
-		player.defens = 2;
-		player.maxhp = 50;
-		player.health = 50;
-		player.inventory.push(new Tool ("staff", "Weapon", 7, false, "grey"));
-		player.inventory.push(new Tool ("spell book", "Magic", false, false, "grey"));
-		player.inventory.push(new Tool ("cloak", "Armor", 4, false, "grey"));
+		p = 1;
 	} else if (valu == "char3"){
 		console.log("Rogue");
-		player.speed = 4;
-		player.power = 2;
-		player.defens = 1;
-		player.maxhp = 50;
-		player.health = 50;
-		player.inventory.push(new Tool ("dagger", "Weapon", 3, false, "grey"));
-		player.inventory.push(new Tool ("dagger", "Weapon", 3, false, "grey"));
-		player.inventory.push(new Tool ("cloak", "Armor", 1, false, "black"));
+		p = 2;
 	}
+	var boss = document.getElementById("place").value;
+	var b = 0
+	if (boss == "desert"){
+		console.log("King Bear");
+		p = 0;
+	} else if (boss == "forest"){
+		console.log("Sarcophagus");
+		p = 1;
+	} else if (boss == "artic"){
+		console.log("Robo");
+		p = 2;
+	}
+	console.log(playerlist)
+	player.speed = playerlist[p].speed;
+	player.power = playerlist[p].power;
+	player.defens = playerlist[p].defens;
+	player.maxhp = playerlist[p].maxhp;
+	player.health = playerlist[p].maxhp;
+	player.xcolnum = 64 * playerlist[p].xcolnum;
+	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
+	player.inventory.push(playerlist[p].inventory1);
+	player.inventory.push(playerlist[p].inventory2);
+	player.inventory.push(playerlist[p].inventory3);
+	game.boss.power = bosslist[b].power;
+	game.boss.defens = bosslist[b].defens;
+	game.boss.maxhp = bosslist[b].maxhp;
+	game.boss.health = bosslist[b].maxhp;
+	game.boss.xcolnum = 92 * bosslist[b].xcolnum;
+	game.boss.ycolnum = 92 * bosslist[b].ycolnum;
+	game.boss.inventory = bosslist[b].inventory1;
+	game.boss.x = 1000;
+	game.boss.y = 345;
 	for (j = 0; j < 10; j++){
 		addtool();
 	}
@@ -84,8 +107,8 @@ function main() {
 function update () {
 	game.clear();
 	//draw the background
-/* 	game.ctx.fillStyle = "green";
-	game.ctx.fillRect(0, 0, game.canvas.width, game.canvas.height); */
+// 	game.ctx.fillStyle = "green";
+	game.ctx.drawImage(bg, 0, 0);
 	//draw the player
 	player.update();
 	//loop through an aray of enemies and draw each one
@@ -104,21 +127,20 @@ function update () {
 	for(i = 0; i < game.tools.length; i++){
 		var dis = Math.sqrt((player.x - game.tools[i].x)**2 + (player.y - game.tools[i].y)**2)
 		if (dis <= 20){
-			console.log("picked up");
-			player.inventory.push(game.tools[i]);
+			//console.log("picked up");
+			if (game.tools[i].type == "Heal"){
+				player.health += game.tools[i].healing;
+				if(player.health > player.maxhp){
+					player.health = player.maxhp;
+				}
+			} else {
+				player.inventory.push(game.tools[i]);
+			}
 			game.tools.splice(i, 1);
 			break;
 		}
 	}
-	for(a = 0; a < player.inventory; a++){
-		if(player.inventory[a].type == "Heal"){
-			player.health += player.inventory[a].healing;
-			if(player.health > player.maxhp){
-				player.health = player.maxhp;
-			}
-			break
-		}
-	}
+	game.boss.update();
 	//check for contact
 }
 function stbat(){
@@ -156,6 +178,7 @@ function battle(){
 			game.enemies[i].health -= damage;
 			if (game.enemies[i].health <= 0){
 				game.enemies.splice(i, 1);
+				//console.log(game.enemies.length)
 			}
 			break;
 		}
@@ -190,39 +213,51 @@ function reset1(){
 	game.tools = [];
 	player.inventory = [];
 	var valu = document.getElementById("char").value;
+	var p = 0
 	if (valu == "char1"){
 		console.log("Knight");
-		player.speed = 2;
-		player.power = 3;
-		player.defens = 3;
-		player.maxhp = 100;
-		player.health = 100;
-		player.inventory.push(new Tool ("sword", "Weapon", 10, false, "grey"));
-		player.inventory.push(new Tool ("sheild", "Armor", 5, false, "grey"));
-		player.inventory.push(new Tool ("armor", "Armor", 6, false, "grey"));
+		p = 0;
 	} else if (valu == "char2"){
 		console.log("Wizard");
-		player.speed = 3;
-		player.power = 2;
-		player.defens = 2;
-		player.maxhp = 75;
-		player.health = 75;
-		player.inventory.push(new Tool ("staff", "Weapon", 7, false, "grey"));
-		player.inventory.push(new Tool ("spell book", "Magic", false, false, "grey"));
-		player.inventory.push(new Tool ("cloak", "Armor", 4, false, "grey"));
+		p = 1;
 	} else if (valu == "char3"){
 		console.log("Rogue");
-		player.speed = 4;
-		player.power = 2;
-		player.defens = 1;
-		player.maxhp = 50;
-		player.health = 50;
-		player.inventory.push(new Tool ("dagger", "Weapon", 3, false, "grey"));
-		player.inventory.push(new Tool ("dagger", "Weapon", 3, false, "grey"));
-		player.inventory.push(new Tool ("cloak", "Armor", 1, false, "black"));
+		p = 2;
 	}
+	var boss = document.getElementById("place").value;
+	var b = 0
+	if (boss == "desert"){
+		console.log("King Bear");
+		p = 0;
+	} else if (boss == "forest"){
+		console.log("Sarcophagus");
+		p = 1;
+	} else if (boss == "artic"){
+		console.log("Robo");
+		p = 2;
+	}
+	console.log(playerlist)
+	player.speed = playerlist[p].speed;
+	player.power = playerlist[p].power;
+	player.defens = playerlist[p].defens;
+	player.maxhp = playerlist[p].maxhp;
+	player.health = playerlist[p].maxhp;
+	player.xcolnum = 64 * playerlist[p].xcolnum;
+	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
+	player.inventory.push(playerlist[p].inventory1);
+	player.inventory.push(playerlist[p].inventory2);
+	player.inventory.push(playerlist[p].inventory3);
 	player.x = 0;
 	player.y = 0;
+	game.boss.power = bosslist[b].power;
+	game.boss.defens = bosslist[b].defens;
+	game.boss.maxhp = bosslist[b].maxhp;
+	game.boss.health = bosslist[b].maxhp;
+	game.boss.xcolnum = 64 * bosslist[b].xcolnum;
+	game.boss.ycolnum = 64 * (2 + bosslist[b].ycolnum);
+	game.boss.inventory = bosslist[b].inventory1;
+	game.boss.x = 1000;
+	game.boss.y = 345;
 	game.init();
 	for (j = 0; j < 10; j++){
 		addtool();
@@ -236,9 +271,9 @@ function addtool (){
 	console.log(toolset)
 	game.tools.push(new Tool (toolset[tole].name, toolset[tole].type, toolset[tole].power, toolset[tole].healing, toolset[tole].color, toolset[tole].xcolnum, toolset[tole].ycolnum));
 }
-function LEVE(){
-	
-}
+//function LEVE(){
+//	
+//}
 function getData(need, target){
 	var xhr = new XMLHttpRequest();
 
