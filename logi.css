@@ -303,40 +303,34 @@ ul.a {
 }
 
 .heart {
-		position: absolute;
-	top: 200px;
-  left: 1415px;
-  right: 4px;
   height: 35px;
   width: 35px;
-}
+
+  }
 
 .bolt {
-		position: absolute;
-	top: 390px;
-  left: 1400px;
-  right: 4px;
   height: 60px;
   width: 60px;
 }
 
 .sheild {
-		position: absolute;
-	top: 303px;
-  left: 1450px;
-  right: 4px;
   height: 30px;
   width: 30px;
 }
 
 .bar1 {
-		position: absolute;
-	top: 440px;
-  left: 1280px;
-  right: 4px;
   height: 40px;
   width: 170px;
 }
 
+#hpbar {
+	top: 240px;
+}
 
+#defensebar {
+	top:340px;
+}
 
+#powerbar {
+	top:440px;
+}
