@@ -2,6 +2,7 @@ var game = {
 	enemies : [],
 	tools : [],
 	Boss : {},
+	obsticals : [],
 	init : function () {
 		this.canvas = document.getElementById("game");
 		this.canvas.width = 1200;
@@ -16,16 +17,27 @@ var game = {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	},
 	addenemie : function(){
-		var entype = Math.round(Math.random() * 3);
-		atk = enemieslist[entype].power;
-		def = enemieslist[entype].defens;
-		speed = enemieslist[entype].speed;
-		hp = enemieslist[entype].maxhp;
-		xcolnum = enemieslist[entype].xcolnum;
-		ycolnum = enemieslist[entype].ycolnum;
-		x = Math.floor(Math.random() * (this.canvas.width - 20));
-		y = Math.floor(Math.random() * (this.canvas.height - 20));
-		newen = new Enemis();
+		let entype = Math.round(Math.random() * 3);
+		let atk = enemieslist[entype].power;
+		let def = enemieslist[entype].defens;
+		let speed = enemieslist[entype].speed;
+		let hp = enemieslist[entype].maxhp;
+		let xcolnum = enemieslist[entype].xcolnum;
+		let ycolnum = enemieslist[entype].ycolnum;
+		let x = Math.floor(Math.random() * (this.canvas.width - 20));
+		let y = Math.floor(Math.random() * (this.canvas.height - 20));
+		let g = true
+		while (g) {
+			let dis = Math.sqrt((player.x - x)**2 + (player.y - y)**2)
+			if (dis <= 100){
+				g = true
+				x = Math.floor(Math.random() * (this.canvas.width - 20));
+				y = Math.floor(Math.random() * (this.canvas.height - 20));
+			} else if (dis > 100){
+				g = false
+			}
+		}
+		let newen = new Enemis();
 		newen.x = x;
 		newen.y = y;
 		newen.health = hp;
@@ -55,28 +67,57 @@ class Character {
 	update(){
 		game.ctx.fillRect(this.x, this.y, 20, 20);
 	}
+	no_obstical(direct){
+		var result = true;
+		for (let t = 0; t < game.obsticals.length; t++){
+			if (direct == 0 && this.y + this.speed <= (game.obsticals[t].maxy) && this.x > game.obsticals[t].x && this.x < game.obsticals[t].maxx && this.y > game.obsticals[t].y){
+				result = false;
+			} else if (direct == 90 && this.x + this.speed <= (game.obsticals[t].x - 20) && this.y > game.obsticals[t].y && this.y < game.obsticals[t].maxy && this.x > game.obsticals[t].x){
+				result = false;
+			} else if (direct == 180 && this.y - this.speed >= (game.obsticals[t].y - 20) && this.x > game.obsticals[t].x && this.x < game.obsticals[t].maxx && this.y < game.obsticals[t].y){
+				result = false;
+			} else if (direct == 270 && this.x - this.speed <= (game.obsticals[t].maxx) && this.y > game.obsticals[t].y && this.y < game.obsticals[t].maxy && this.x < game.obsticals[t].x){
+				result = false;
+			}
+		}
+		return result;
+	}
 }
 class Player extends Character {
 	constructor(name, imagename){
 		super(name, imagename);
 		this.speed = 3;
+		this.bossBattle = false;
+		this.dust = 1;
 	}
 	update(){
 		this.checkkeys();
 		game.ctx.drawImage(pp, this.xcolnum, this.ycolnum, 64, 64, this.x, this.y, 32, 32);
+		if (this.bossBattle || this.incombat){
+			let colum = (this.dust%5) * 55
+			let row = 0
+			if (this.dust <= 5) {
+				row = 0;
+			} else if (this.dust <= 10) {
+				row = 60
+			} else {
+				row = 120
+			}
+			game.ctx.drawImage(dd, colum, row, 60, 55, this.x, this.y, 32, 32);
+		}
 	}
 	checkkeys(){
-		if (!this.incombat){
-			if (keysdown[40] && this.y < (game.canvas.height - 20)){
+		if (!this.incombat && !this.bossBattle){
+			if (keysdown[40] && this.y < (game.canvas.height - 20) && this.no_obstical(180)){
 				this.y += this.speed
 			}
-			if (keysdown[38] && this.y > 0){
+			if (keysdown[38] && this.y > 0 && this.no_obstical(0)){
 				this.y -= this.speed
 			}
-			if (keysdown[37] && this.x > 0){
+			if (keysdown[37] && this.x > 0 && this.no_obstical(270)){
 				this.x -= this.speed
 			}
-			if (keysdown[39] && this.x < (game.canvas.width - 20)){
+			if (keysdown[39] && this.x < (game.canvas.width - 20) && this.no_obstical(90)){
 				this.x += this.speed
 			}
 		} else {
@@ -105,18 +146,18 @@ class Enemis extends Character {
 		game.ctx.drawImage(ee, this.xcolnum, this.ycolnum, 67, 67, this.x, this.y, 32, 32);
 	}
 	move(){
-		if (this.distance()){
+		if (this.distance() && !player.bossBattle){
 			//console.log(this.speed);
-			if (player.x > this.x){
-				this.x += this.speed;
-			} else if (player.x < this.x){
-				this.x -= this.speed;
-			}
-			if (player.y > this.y){
-				this.y += this.speed;
-			} else if (player.y < this.y){
-				this.y -= this.speed;
-			}
+				if (player.x > this.x && this.no_obstical(90)){
+					this.x += this.speed;
+				} else if (player.x < this.x && this.no_obstical(270)){
+					this.x -= this.speed;
+				}
+				if (player.y > this.y && this.no_obstical(180)){
+					this.y += this.speed;
+				} else if (player.y < this.y && this.no_obstical(0)){
+					this.y -= this.speed;
+				}
 			//console.log(this.x);
 			//console.log(this.y);
 		} else {
@@ -127,14 +168,14 @@ class Enemis extends Character {
 				this.frams += 1;
 			}
 			if (this.dir == 0){
-				if (this.y > 0){
+				if (this.y > 0 && this.no_obstical(0)){
 					this.y -= 1;
 				} else {
 					this.direction();
 					this.frams = 0;
 				}
 			} else if (this.dir == 45){
-				if (this.y > 0 && this.x < game.canvas.width -20){
+				if (this.y > 0 && this.x < game.canvas.width -20 && this.no_obstical(0) && this.no_obstical(90)){
 					this.y -= 1;
 					this.x += 1;
 				} else {
@@ -142,14 +183,14 @@ class Enemis extends Character {
 					this.frams = 0;
 				}
 			} else if (this.dir == 90){
-				if (this.x < game.canvas.width -20){
+				if (this.x < game.canvas.width -20 && this.no_obstical(90)){
 					this.x += 1;
 				} else {
 					this.direction();
 					this.frams = 0;
 				}
 			} else if (this.dir == 135){
-				if (this.y < game.canvas.height -20 && this.x < game.canvas.width -20){
+				if (this.y < game.canvas.height -20 && this.x < game.canvas.width -20 && this.no_obstical(90) && this.no_obstical(180)){
 					this.y += 1;
 					this.x += 1;
 				} else {
@@ -157,14 +198,14 @@ class Enemis extends Character {
 					this.frams = 0;
 				}
 			} else if (this.dir == 180){
-				if (this.y < game.canvas.height -20){
+				if (this.y < game.canvas.height -20 && this.no_obstical(180)){
 					this.y += 1;
 				} else {
 					this.direction();
 					this.frams = 0;
 				}
 			} else if (this.dir == 225){
-				if (this.y < game.canvas.height -20 && this.x > 0){
+				if (this.y < game.canvas.height -20 && this.x > 0 && this.no_obstical(180) && this.no_obstical(270)){
 					this.y += 1;
 					this.x -= 1;
 				} else {
@@ -172,11 +213,11 @@ class Enemis extends Character {
 					this.frams = 0;
 				}
 			} else if (this.dir == 270){
-				if(this.x > 0){
+				if(this.x > 0 && this.no_obstical(this.dir)){
 					this.x -= 1;
 				}
 			} else if (this.dir == 315){
-				if (this.y > 0 && this.x > 0){
+				if (this.y > 0 && this.x > 0 && this.no_obstical(270) && this.no_obstical(0)){
 					this.y -= 1;
 					this.x -= 1;
 				}
@@ -188,11 +229,13 @@ class Enemis extends Character {
 		}
 	}
 	distance(){
-		var dis = Math.sqrt((player.x - this.x)**2 + (player.y - this.y)**2)
-		if (dis <= 100){
-			return true
-		} else if (dis > 100){
-			return false
+		if (!player.bossBattle){
+			var dis = Math.sqrt((player.x - this.x)**2 + (player.y - this.y)**2)
+			if (dis <= 100){
+				return true
+			} else if (dis > 100){
+				return false
+			}
 		}
 	}
 	direction(){
@@ -206,6 +249,17 @@ class Boss extends Character {
 	}
 	update(){
 		game.ctx.drawImage(bb, this.xcolnum, this.ycolnum, 92, 92, this.x, this.y, 46, 46);
+		if(this.distance()){
+			player.bossBattle = true;
+		}
+	}
+	distance(){
+		var dis = Math.sqrt((player.x - this.x)**2 + (player.y - this.y)**2)
+		if (dis <= 50){
+			return true
+		} else if (dis > 50){
+			return false
+		}
 	}
 }
 class Tool{

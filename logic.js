@@ -5,6 +5,7 @@ var ee = document.createElement("img");
 var pp = document.createElement("img");
 var bg = document.createElement("img");
 var bb = document.createElement("img");
+var dd = document.createElement("img");
 var toolset = [];
 var enemieslist = [];
 var playerlist = [];
@@ -18,6 +19,7 @@ function start(){
 	ee.src = "images/enemies.png";
 	pp.src = "images/char.png";
 	bb.src = "images/bosses.png";
+	dd.src = "images/dust.png";
 	console.log(typeof(pp));
 	getData("tools.json", toolset);
 	getData("enemies.json", enemieslist);
@@ -55,54 +57,7 @@ function main() {
 	document.getElementById("character").style.display = "none";
 	document.getElementById("game").style.display = "block";
 	player = new Player();
-	var valu = document.getElementById("char").value;
-	game.init();
-	var p = 0
-	if (valu == "char1"){
-		console.log("Knight");
-		p = 0;
-	} else if (valu == "char2"){
-		console.log("Wizard");
-		p = 1;
-	} else if (valu == "char3"){
-		console.log("Rogue");
-		p = 2;
-	}
-	var boss = document.getElementById("place").value;
-	var b = 0
-	if (boss == "desert"){
-		console.log("King Bear");
-		p = 0;
-	} else if (boss == "forest"){
-		console.log("Sarcophagus");
-		p = 1;
-	} else if (boss == "artic"){
-		console.log("Robo");
-		p = 2;
-	}
-	console.log(playerlist)
-	player.speed = playerlist[p].speed;
-	player.power = playerlist[p].power;
-	player.defens = playerlist[p].defens;
-	player.maxhp = playerlist[p].maxhp;
-	player.health = playerlist[p].maxhp;
-	player.xcolnum = 64 * playerlist[p].xcolnum;
-	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
-	player.inventory.push(playerlist[p].inventory1);
-	player.inventory.push(playerlist[p].inventory2);
-	player.inventory.push(playerlist[p].inventory3);
-	game.boss.power = bosslist[b].power;
-	game.boss.defens = bosslist[b].defens;
-	game.boss.maxhp = bosslist[b].maxhp;
-	game.boss.health = bosslist[b].maxhp;
-	game.boss.xcolnum = 92 * bosslist[b].xcolnum;
-	game.boss.ycolnum = 92 * bosslist[b].ycolnum;
-	game.boss.inventory = bosslist[b].inventory1;
-	game.boss.x = 1000;
-	game.boss.y = 345;
-	for (j = 0; j < 10; j++){
-		addtool();
-	}
+	MainSet();
 }
 function update () {
 	game.clear();
@@ -115,9 +70,17 @@ function update () {
 	if (player.incombat){
 		if (player.cframe%10 == 0){
 			battle();
+			player.dust++;
 		}
 	}
-	stbat();
+	if (!player.bossBattle){
+		stbat();
+	} else {
+		if (player.cframe%10 == 0){
+			bBattle();
+			player.dust++;
+		}
+	}
 	for(i = 0; i < game.enemies.length; i++){
 		game.enemies[i].update();
 	}
@@ -140,7 +103,9 @@ function update () {
 			break;
 		}
 	}
-	game.boss.update();
+	if (game.boss != null){
+		game.boss.update();
+	}
 	//check for contact
 }
 function stbat(){
@@ -156,7 +121,44 @@ function stbat(){
 	}
 	player.incombat = pcom;
 }
+function bBattle(){
+	console.log("Boss Battle");
+	var atktot = player.power;
+	for (g = 0; g < player.inventory.length; g++){
+		if (player.inventory[g].type == "Weapon"){
+			atktot += player.inventory[g].power;
+		}
+	}
+	var deftot = player.power;
+	for (g = 0; g < player.inventory.length; g++){
+		if (player.inventory[g].type == "Armor"){
+			deftot += player.inventory[g].power;
+		}
+	}
+	var bdamage = atktot - game.boss.defens
+	if (bdamage <= 0){
+		bdamage = 1;
+	}
+	console.log(bdamage);
+	game.boss.health -= bdamage;
+	var pdamage = game.boss.power - deftot
+	if (pdamage <= 0){
+		pdamage = 1;
+	}
+	console.log(pdamage);
+	player.health -= pdamage;
+	console.log(player.health);
+	if (player.health <= 0){
+		reset1();
+		player.bossBattle = false;
+	}
+	if (game.boss.health <= 0){
+		game.boss = null;
+		player.bossBattle = false;
+	}
+}
 function battle(){
+	console.log("Enemies")
 	var atktot = player.power;
 	for (g = 0; g < player.inventory.length; g++){
 		if (player.inventory[g].type == "Weapon"){
@@ -178,7 +180,6 @@ function battle(){
 			game.enemies[i].health -= damage;
 			if (game.enemies[i].health <= 0){
 				game.enemies.splice(i, 1);
-				//console.log(game.enemies.length)
 			}
 			break;
 		}
@@ -198,7 +199,7 @@ function battle(){
 	var v = 0;
 	for (i = 0; i < game.enemies.length; i++){
 		if (game.enemies[i].incombat){
-			v += 1;
+			v++;
 		}
 	}
 	if (v == 0){
@@ -212,56 +213,7 @@ function reset1(){
 	game.enemies = [];
 	game.tools = [];
 	player.inventory = [];
-	var valu = document.getElementById("char").value;
-	var p = 0
-	if (valu == "char1"){
-		console.log("Knight");
-		p = 0;
-	} else if (valu == "char2"){
-		console.log("Wizard");
-		p = 1;
-	} else if (valu == "char3"){
-		console.log("Rogue");
-		p = 2;
-	}
-	var boss = document.getElementById("place").value;
-	var b = 0
-	if (boss == "desert"){
-		console.log("King Bear");
-		p = 0;
-	} else if (boss == "forest"){
-		console.log("Sarcophagus");
-		p = 1;
-	} else if (boss == "artic"){
-		console.log("Robo");
-		p = 2;
-	}
-	console.log(playerlist)
-	player.speed = playerlist[p].speed;
-	player.power = playerlist[p].power;
-	player.defens = playerlist[p].defens;
-	player.maxhp = playerlist[p].maxhp;
-	player.health = playerlist[p].maxhp;
-	player.xcolnum = 64 * playerlist[p].xcolnum;
-	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
-	player.inventory.push(playerlist[p].inventory1);
-	player.inventory.push(playerlist[p].inventory2);
-	player.inventory.push(playerlist[p].inventory3);
-	player.x = 0;
-	player.y = 0;
-	game.boss.power = bosslist[b].power;
-	game.boss.defens = bosslist[b].defens;
-	game.boss.maxhp = bosslist[b].maxhp;
-	game.boss.health = bosslist[b].maxhp;
-	game.boss.xcolnum = 64 * bosslist[b].xcolnum;
-	game.boss.ycolnum = 64 * (2 + bosslist[b].ycolnum);
-	game.boss.inventory = bosslist[b].inventory1;
-	game.boss.x = 1000;
-	game.boss.y = 345;
-	game.init();
-	for (j = 0; j < 10; j++){
-		addtool();
-	}
+	MainSet();
 }
 function adden (){
 	game.enemies.push(game.addenemie());
@@ -288,4 +240,58 @@ function getData(need, target){
 	}
 	xhr.open("GET", need);
 	xhr.send();
+}
+function MainSet(){
+	game.init();
+	var valu = document.getElementById("char").value;
+	var p = 0
+	if (valu == "char1"){
+		console.log("Knight");
+		p = 0;
+	} else if (valu == "char2"){
+		console.log("Wizard");
+		p = 1;
+	} else if (valu == "char3"){
+		console.log("Rogue");
+		p = 2;
+	}
+	var boss = document.getElementById("place").value;
+	var b = 0
+	if (boss == "desert"){
+		console.log("Sarcophagus");
+		b = 1;
+	} else if (boss == "forest"){
+		console.log("King Bear");
+		b = 0;
+	} else if (boss == "artic"){
+		console.log("Robo");
+		b = 2;
+	}
+	console.log(playerlist)
+	player.speed = playerlist[p].speed;
+	player.power = playerlist[p].power;
+	player.defens = playerlist[p].defens;
+	player.maxhp = playerlist[p].maxhp;
+	player.health = playerlist[p].maxhp;
+	player.xcolnum = 64 * playerlist[p].xcolnum;
+	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
+	player.inventory.push(playerlist[p].inventory1);
+	player.inventory.push(playerlist[p].inventory2);
+	player.inventory.push(playerlist[p].inventory3);
+	player.x = 0;
+	player.y = 0;
+	game.boss.power = bosslist[b].power;
+	game.boss.defens = bosslist[b].defens;
+	game.boss.maxhp = bosslist[b].maxhp;
+	game.boss.health = bosslist[b].maxhp;
+	game.boss.xcolnum = 92 * bosslist[b].xcolnum;
+	game.boss.ycolnum = 92 * bosslist[b].ycolnum;
+	game.boss.inventory = bosslist[b].inventory1;
+	game.boss.x = 1000;
+	game.boss.y = 345;
+	console.log(game.boss.xcolnum);
+	console.log(game.boss.ycolnum);
+	for (j = 0; j < 10; j++){
+		addtool();
+	}
 }
