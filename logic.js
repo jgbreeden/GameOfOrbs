@@ -8,10 +8,12 @@ var bb = document.createElement("img");
 var toolset = [];
 var enemieslist = [];
 var playerlist = [];
+var hp = {};
 bg.src = "images/desert.png";
 var bosslist = [];
 function start(){
-	document.getElementById("places").style.display = "block";
+	var hp = document.getElementById("hp");
+	hp.value = 0;
 	document.getElementById("intro").style.display = "none";
 	document.getElementById("character").style.display = "block";
 	ss.src = "images/items.gif";
@@ -53,6 +55,7 @@ function main() {
 	}, false);
 	console.log("main");
 	document.getElementById("character").style.display = "none";
+	document.getElementById("places").style.display = "block";
 	document.getElementById("game").style.display = "block";
 	player = new Player();
 	var valu = document.getElementById("char").value;
@@ -133,7 +136,8 @@ function update () {
 				if(player.health > player.maxhp){
 					player.health = player.maxhp;
 				}
-			} else {
+				hp.value = player.health
+				} else {
 				player.inventory.push(game.tools[i]);
 			}
 			game.tools.splice(i, 1);
@@ -169,6 +173,7 @@ function battle(){
 			deftot += player.inventory[g].power;
 		}
 	}
+	
 	for (i = 0; i < game.enemies.length; i++){
 		if (game.enemies[i].incombat){
 			var damage = atktot - game.enemies[i].defens;
@@ -195,6 +200,7 @@ function battle(){
 			reset1();
 		}
 	}
+	showhealth();
 	var v = 0;
 	for (i = 0; i < game.enemies.length; i++){
 		if (game.enemies[i].incombat){
@@ -205,6 +211,8 @@ function battle(){
 		player.incombat = false;
 	}
 }
+
+
 function reset1(){
 	clearInterval(game.interval1);
 	clearInterval(game.interval2);
@@ -224,6 +232,7 @@ function reset1(){
 		console.log("Rogue");
 		p = 2;
 	}
+	
 	var boss = document.getElementById("place").value;
 	var b = 0
 	if (boss == "desert"){
@@ -288,4 +297,9 @@ function getData(need, target){
 	}
 	xhr.open("GET", need);
 	xhr.send();
+}
+function showhealth() {
+	hp.value = player.health;
+	console.log(hp.id);
+	
 }

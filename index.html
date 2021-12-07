@@ -63,20 +63,30 @@
 	
 	<div id="places" style="display:none">
 		<ul class="a">
-		  <li>Health</li>
+		  <li>Health
+		  <img src="images/pxheart.png" class="heart"> <br>
 		  <br>
+		  <input type="text" id="hp" readonly>
 		  <br>
-		  <li>Defense</li>
+		  <img src="images/bar1.png" class="bar" id="hpbar">
+		  </li>
+		  <li>Defense
+		  <img src="images/pxsheild.png" class="sheild"><br>
 		  <br>
+		  <input type="text" readonly>
+		  </li>
+		  <li>Power
+		  <img src="images/pxbolt.png" class="bolt">
 		  <br>
-		  <li>Power</li>
-		  <br>
-		  <br>
+		  <input type="text" readonly>
+		  </li>
 		</ul>
-			<img src="images/pxheart.png" class="heart">
-			<img src="images/pxbolt.png" class="bolt">
-			<img src="images/pxsheild.png" class="sheild">
-			<img src="images/bar1.png" class="bar1">
+			
+			
+			
+			
+			
+			
 		<p class="plctitle"> Select starting point</p>
 		<select id="place" onchange="setplace(this.value)">
 			<option value="desert">Desert</option>
