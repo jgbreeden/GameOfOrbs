@@ -100,8 +100,9 @@ function update () {
 					player.health = player.maxhp;
 				}
 				hp.value = player.health
-				} else {
+			} else {
 				player.inventory.push(game.tools[i]);
+				showInv();
 			}
 			game.tools.splice(i, 1);
 			break;
@@ -201,7 +202,7 @@ function battle(){
 			reset1();
 		}
 	}
-	showhealth();
+	showHealth();
 	var v = 0;
 	for (i = 0; i < game.enemies.length; i++){
 		if (game.enemies[i].incombat){
@@ -354,8 +355,15 @@ function MainSet(){
 		addtool();
 	}
 }
-function showhealth() {
+function showHealth() {
 	hp.value = player.health;
 	console.log(hp.id);
 	
 }
+function showInv() {
+	var text = "";
+	for (t = 0; t < player.inventory.length; t++){
+		text += "<li> </li>" + player.inventory.length[t].name;
+		<ul id = tlset> tlset.innerHTML = text; 
+	}
+} 
