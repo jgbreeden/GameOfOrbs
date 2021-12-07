@@ -1,5 +1,23 @@
 [
-	{"type": "Knight", "speed": 2, "power": 3, "defens": 3, "maxhp":100, "inventory1" : "new tool ('Sword', 'Weapon', 10, false, 'grey')", "inventory2" : "new tool ('sheild', 'Armor', 5, false, 'grey')", "inventory3" : "new tool ('armor', 'Armor', 6, false, 'grey')", "xcolnum" : 0, "ycolnum" : 0},
-	{"type": "Wizard", "speed": 3, "power": 2, "defens": 2, "maxhp":75, "inventory1":"new tool ('staff', 'Weapon', 7, false, 'grey')", "inventory2":"new tool ('spell book', 'Magic', false, false, 'grey')", "inventory3":"new tool ('cloak', 'Armor', 4, false, 'grey')", "xcolnum" : 0, "ycolnum" : 1},
-	{"type": "Rogue", "speed": 4, "power": 2, "defens": 1, "maxhp":50, "inventory1":"new tool ('dagger', 'Weapon', 3, false, 'grey')", "inventory2":"new tool ('dagger', 'Weapon', 3, false, 'grey')", "inventory3":"new tool ('cloak', 'Armor', 1, false, 'black')", "xcolnum" : 0, "ycolnum" : 2}
+	{"type": "Knight", "speed": 2, "power": 3, "defens": 3, "maxhp":100, 
+		"inventory":
+			[	{"name": "sword", "type": "Weapon", "power": 10, "healing": false, "color":"grey", "xcolnum" : 0, "ycolnum" : 1},
+				{"name": "sheild", "type": "Armor", "power": 5, "healing": false, "color":"grey", "xcolnum" : 1, "ycolnum" : 3},
+				{"name": "armor", "type": "Armor", "power": 6, "healing": false, "color":"grey", "xcolnum" : 0, "ycolnum" : 5}
+			],
+			"xcolnum" : 0, "ycolnum" : 0},
+	{"type": "Wizard", "speed": 3, "power": 2, "defens": 2, "maxhp":75,
+		"inventory":
+			[	{"name": "staff", "type": "Weapon", "power": 7, "healing": false, "color":"grey", "xcolnum" : 5, "ycolnum" : 2},
+				{"name": "spell book", "type": "Magic", "power": false, "healing": false, "color":"grey", "xcolnum" : 1, "ycolnum" : 10},
+				{"name": "cloak", "type": "Armor", "power": 4, "healing": false, "color":"grey", "xcolnum" : 9, "ycolnum" : 5}
+			],
+			"xcolnum" : 0, "ycolnum" : 1},
+	{"type": "Rogue", "speed": 4, "power": 2, "defens": 1, "maxhp":50, 
+		"inventory":
+			[	{"name": "dagger", "type": "Weapon", "power": 3, "healing": false, "color":"grey", "xcolnum" : 7, "ycolnum" : 0},
+				{"name": "dagger", "type": "Weapon", "power": 3, "healing": false, "color":"grey", "xcolnum" : 7, "ycolnum" : 0},
+				{"name": "rough cloak", "type": "Armor", "power": 1, "healing": false, "color":"black", "xcolnum" : 9, "ycolnum" : 5}
+			],
+			"xcolnum" : 0, "ycolnum" : 2}
 ]
