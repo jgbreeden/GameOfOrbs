@@ -212,8 +212,6 @@ function battle(){
 		player.incombat = false;
 	}
 }
-
-
 function reset1(){
 	clearInterval(game.interval1);
 	clearInterval(game.interval2);
@@ -222,57 +220,6 @@ function reset1(){
 	game.tools = [];
 	player.inventory = [];
 	MainSet();
-	var valu = document.getElementById("char").value;
-	var p = 0
-	if (valu == "char1"){
-		console.log("Knight");
-		p = 0;
-	} else if (valu == "char2"){
-		console.log("Wizard");
-		p = 1;
-	} else if (valu == "char3"){
-		console.log("Rogue");
-		p = 2;
-	}
-	
-	var boss = document.getElementById("place").value;
-	var b = 0
-	if (boss == "desert"){
-		console.log("King Bear");
-		p = 0;
-	} else if (boss == "forest"){
-		console.log("Sarcophagus");
-		p = 1;
-	} else if (boss == "artic"){
-		console.log("Robo");
-		p = 2;
-	}
-	console.log(playerlist)
-	player.speed = playerlist[p].speed;
-	player.power = playerlist[p].power;
-	player.defens = playerlist[p].defens;
-	player.maxhp = playerlist[p].maxhp;
-	player.health = playerlist[p].maxhp;
-	player.xcolnum = 64 * playerlist[p].xcolnum;
-	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
-	player.inventory.push(playerlist[p].inventory1);
-	player.inventory.push(playerlist[p].inventory2);
-	player.inventory.push(playerlist[p].inventory3);
-	player.x = 0;
-	player.y = 0;
-	game.boss.power = bosslist[b].power;
-	game.boss.defens = bosslist[b].defens;
-	game.boss.maxhp = bosslist[b].maxhp;
-	game.boss.health = bosslist[b].maxhp;
-	game.boss.xcolnum = 64 * bosslist[b].xcolnum;
-	game.boss.ycolnum = 64 * (2 + bosslist[b].ycolnum);
-	game.boss.inventory = bosslist[b].inventory1;
-	game.boss.x = 1000;
-	game.boss.y = 345;
-	game.init();
-	for (j = 0; j < 10; j++){
-		addtool();
-	}
 }
 function adden (){
 	game.enemies.push(game.addenemie());
@@ -334,9 +281,9 @@ function MainSet(){
 	player.health = playerlist[p].maxhp;
 	player.xcolnum = 64 * playerlist[p].xcolnum;
 	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
-	player.inventory.push(playerlist[p].inventory1);
-	player.inventory.push(playerlist[p].inventory2);
-	player.inventory.push(playerlist[p].inventory3);
+	for (let j = 0; playerlist[p].inventory.length; j++){
+		player.inventory.push(playerlist[p].inventory[j]);
+	}
 	player.x = 0;
 	player.y = 0;
 	game.boss.power = bosslist[b].power;
