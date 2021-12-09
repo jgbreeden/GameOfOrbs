@@ -310,7 +310,9 @@ function showHealth() {
 function showInv() {
 	var text = "";
 	for (t = 0; t < player.inventory.length; t++){
-		text += "<li> </li>" + player.inventory.length[t].name;
-		<ul id = tlset> tlset.innerHTML = text; 
+		text += "<li>" + player.inventory.length[t].name + "</li>";
+
 	}
-} 
+	tlset = document.getelementbyid("tlset");
+	tlset.innerHTML = text;
+}
