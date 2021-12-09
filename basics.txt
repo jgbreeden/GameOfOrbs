@@ -138,3 +138,13 @@ itmes
 	fire		orb
 	ice			orb
 	earth		orb
+
+obsticles image
+	row 1 - 98
+	row 2 - 84
+	row 3 - 86
+	row 4 - 80
+	col 1 - 100
+	col 2 - 110
+	col 3 - 100
+	col 4 - 80
