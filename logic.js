@@ -156,8 +156,11 @@ function bBattle(){
 	if (player.health <= 0){
 		reset1();
 		player.bossBattle = false;
-	}
-	if (game.boss.health <= 0){
+	} else if (game.boss.health <= 0){
+		player.inventory.push(game.boss.inventory)
+		for (g = 0; g < player.inventory.length; g++){
+			console.log(player.inventory[g])
+		}
 		game.boss = null;
 		player.bossBattle = false;
 	}
