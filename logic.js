@@ -285,7 +285,7 @@ function MainSet(){
 	player.health = playerlist[p].maxhp;
 	player.xcolnum = 64 * playerlist[p].xcolnum;
 	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
-	for (let j = 0; playerlist[p].inventory.length; j++){
+	for (let j = 0; j < playerlist[p].inventory.length; j++){
 		player.inventory.push(playerlist[p].inventory[j]);
 	}
 	player.x = 0;
@@ -313,9 +313,9 @@ function showHealth() {
 function showInv() {
 	var text = "";
 	for (t = 0; t < player.inventory.length; t++){
-		text += "<li>" + player.inventory.length[t].name + "</li>";
+		text += "<li>" + player.inventory[t].name + "</li>";
 
 	}
-	tlset = document.getelementbyid("tlset");
+	tlset = document.getElementById("tlset");
 	tlset.innerHTML = text;
 }
