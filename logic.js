@@ -206,6 +206,7 @@ function battle(){
 		}
 	}
 	showHealth();
+	
 	var v = 0;
 	for (i = 0; i < game.enemies.length; i++){
 		if (game.enemies[i].incombat){

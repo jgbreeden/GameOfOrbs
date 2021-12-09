@@ -334,3 +334,25 @@ ul.a {
 #powerbar {
 	top:440px;
 }
+
+#tlset {
+  position: absolute;
+  top: 600px;
+  left: 1190px;
+  right: 4px;
+  margin-right: 30px;
+  margin-left: 68px;
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 26px;
+  font-family: 'Aclonica';
+  font-size: 15px;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 3px #999999;
+  color: #4d0000;
+  text-align: left;
+  border: 2px solid grey;
+  border-radius: 12px;
+  background-image: linear-gradient(#00334d, #262626);
+}
