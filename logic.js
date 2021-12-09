@@ -13,7 +13,7 @@ var hp = {};
 bg.src = "images/desert.png";
 var bosslist = [];
 function start(){
-	var hp = document.getElementById("hp");
+    hp = document.getElementById("hp");
 	hp.value = 0;
 	document.getElementById("intro").style.display = "none";
 	document.getElementById("character").style.display = "block";
@@ -313,9 +313,9 @@ function showHealth() {
 function showInv() {
 	var text = "";
 	for (t = 0; t < player.inventory.length; t++){
-		text += "<li>" + player.inventory.length[t].name + "</li>";
+		text += "<li>" + player.inventory[t].name + "</li>";
 
 	}
-	tlset = document.getelementbyid("tlset");
+	tlset = document.getElementById("tlset");
 	tlset.innerHTML = text;
 }
