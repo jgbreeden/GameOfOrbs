@@ -280,6 +280,20 @@ class Tool{
 		//game.ctx.fillRect(this.x, this.y, 20, 20);
 	}
 }
+class Obstacles{
+	constructor(x, y, xcord, ycord, xgrab, ygrab){
+		this.x = x;
+		this.y = y;
+		this.xcord = xcord;
+		this.ycord = ycord;
+		this.xgrab = xgrab;
+		this.ygrab = ygrab;
+	}
+	update(){
+		console.log("obstical")
+		game.ctx.drawImage(oo, this.xcord, this.ycord, this.xgrab, this.ygrab, this.x, this.y, this.xgrab, this.ygrab);
+	}
+}
 //characters
 	//players
 		//wizzard
