@@ -71,28 +71,28 @@ class Character {
 		var result = true;
 		for (let t = 0; t < game.obsticals.length; t++){
 			if (direct == 0 
-				&& this.y + this.speed <= (game.obsticals[t].maxy) 
+				&& this.y - this.speed <= (game.obsticals[t].y + game.obsticals[t].maxy) 
 				&& this.x > game.obsticals[t].x 
 				&& this.x < game.obsticals[t].maxx + game.obsticals[t].x
 				&& this.y > game.obsticals[t].y){
 					result = false;
 			} else if (direct == 90 
-				&& this.x + this.speed <= (game.obsticals[t].x - 20) 
+				&& this.x + this.speed >= (game.obsticals[t].x - 20) 
+				&& this.y > game.obsticals[t].y 
+				&& this.y < game.obsticals[t].maxy + game.obsticals[t].y
+				&& this.x < game.obsticals[t].x + game.obsticals[t].maxx){
+					result = false;
+			} else if (direct == 180 
+				&& this.y + this.speed >= (game.obsticals[t].y - 20) 
+				&& this.x > game.obsticals[t].x 
+				&& this.x < game.obsticals[t].maxx + game.obsticals[t].x
+				&& this.y < game.obsticals[t].y + game.obsticals[t].maxy){
+					result = false;
+			} else if (direct == 270 
+				&& this.x - this.speed <= (game.obsticals[t].x + game.obsticals[t].maxx) 
 				&& this.y > game.obsticals[t].y 
 				&& this.y < game.obsticals[t].maxy + game.obsticals[t].y
 				&& this.x > game.obsticals[t].x){
-					result = false;
-			} else if (direct == 180 
-				&& this.y - this.speed >= (game.obsticals[t].y - 20) 
-				&& this.x > game.obsticals[t].x 
-				&& this.x < game.obsticals[t].maxx + game.obsticals[t].x
-				&& this.y < game.obsticals[t].y){
-					result = false;
-			} else if (direct == 270 
-				&& this.x - this.speed <= (game.obsticals[t].maxx) 
-				&& this.y > game.obsticals[t].y 
-				&& this.y < game.obsticals[t].maxy + game.obsticals[t].y
-				&& this.x < game.obsticals[t].x){
 					result = false;
 			}
 		}
