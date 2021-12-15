@@ -276,7 +276,7 @@ function MainSet(){
 	for (let j = 0; j < playerlist[p].inventory.length; j++){
 		player.inventory.push(playerlist[p].inventory[j]);
 	}
-	game.obsticals.push(new Obstacles (obsticallist[b].x, obsticallist[b].y, obsticallist[b].xcord, obsticallist[b].ycord, obsticallist[b].xgrab, obsticallist[b].ygrab));
+	game.obsticals.push(new Obstacles (obsticallist[b].obsticles[0].x, obsticallist[b].obsticles[0].y, obsticallist[b].obsticles[0].xcord, obsticallist[b].obsticles[0].ycord, obsticallist[b].obsticles[0].xgrab, obsticallist[b].obsticles[0].ygrab));
 	player.x = 0;
 	player.y = 0;
 	game.boss.power = bosslist[b].power;
