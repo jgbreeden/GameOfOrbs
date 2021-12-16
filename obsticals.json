@@ -1,20 +1,14 @@
 [
-	{"area": "Knight",
-		"inventory":
-			[	{"name": "sword", "type": "Weapon", "power": 10, "healing": false, "color":"grey", "xcolnum" : 0, "ycolnum" : 1},
-				{"name": "sheild", "type": "Armor", "power": 5, "healing": false, "color":"grey", "xcolnum" : 1, "ycolnum" : 3},
-				{"name": "armor", "type": "Armor", "power": 6, "healing": false, "color":"grey", "xcolnum" : 0, "ycolnum" : 5}
-			]},
-	{"area": "Wizard",
-		"inventory":
-			[	{"name": "staff", "type": "Weapon", "power": 7, "healing": false, "color":"grey", "xcolnum" : 5, "ycolnum" : 2},
-				{"name": "spell book", "type": "Magic", "power": false, "healing": false, "color":"grey", "xcolnum" : 1, "ycolnum" : 10},
-				{"name": "wizzard cloak", "type": "Armor", "power": 4, "healing": false, "color":"grey", "xcolnum" : 9, "ycolnum" : 5}
-			]},
-	{"area": "Rogue",
-		"inventory":
-			[	{"name": "dagger", "type": "Weapon", "power": 3, "healing": false, "color":"grey", "xcolnum" : 7, "ycolnum" : 0},
-				{"name": "dagger", "type": "Weapon", "power": 3, "healing": false, "color":"grey", "xcolnum" : 7, "ycolnum" : 0},
-				{"name": "rough cloak", "type": "Armor", "power": 1, "healing": false, "color":"black", "xcolnum" : 9, "ycolnum" : 5}
-			]}
+	{"area" : "forest",
+        "obsticles":
+			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 310, "ycord" : 0, "xgrab" : 80, "ygrab" :98} ]
+    },
+	{"area" : "desert",
+        "obsticles":
+			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 0, "ycord" : 0, "xgrab" : 100, "ygrab" :98} ]
+    },
+	{"area" : "artic",
+        "obsticles":
+			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 100, "ycord" : 98, "xgrab" : 110, "ygrab" :84} ]
+    }
 ]

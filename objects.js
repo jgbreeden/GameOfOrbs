@@ -71,14 +71,30 @@ class Character {
 	no_obstical(direct){
 		var result = true;
 		for (let t = 0; t < game.obsticals.length; t++){
-			if (direct == 0 && this.y + this.speed <= (game.obsticals[t].maxy) && this.x > game.obsticals[t].x && this.x < game.obsticals[t].maxx && this.y > game.obsticals[t].y){
-				result = false;
-			} else if (direct == 90 && this.x + this.speed <= (game.obsticals[t].x - 20) && this.y > game.obsticals[t].y && this.y < game.obsticals[t].maxy && this.x > game.obsticals[t].x){
-				result = false;
-			} else if (direct == 180 && this.y - this.speed >= (game.obsticals[t].y - 20) && this.x > game.obsticals[t].x && this.x < game.obsticals[t].maxx && this.y < game.obsticals[t].y){
-				result = false;
-			} else if (direct == 270 && this.x - this.speed <= (game.obsticals[t].maxx) && this.y > game.obsticals[t].y && this.y < game.obsticals[t].maxy && this.x < game.obsticals[t].x){
-				result = false;
+			if (direct == 0 
+				&& this.y - this.speed <= (game.obsticals[t].y + game.obsticals[t].maxy) 
+				&& this.x > game.obsticals[t].x 
+				&& this.x < game.obsticals[t].maxx + game.obsticals[t].x
+				&& this.y > game.obsticals[t].y){
+					result = false;
+			} else if (direct == 90 
+				&& this.x + this.speed >= (game.obsticals[t].x - 20) 
+				&& this.y > game.obsticals[t].y 
+				&& this.y < game.obsticals[t].maxy + game.obsticals[t].y
+				&& this.x < game.obsticals[t].x + game.obsticals[t].maxx){
+					result = false;
+			} else if (direct == 180 
+				&& this.y + this.speed >= (game.obsticals[t].y - 20) 
+				&& this.x > game.obsticals[t].x 
+				&& this.x < game.obsticals[t].maxx + game.obsticals[t].x
+				&& this.y < game.obsticals[t].y + game.obsticals[t].maxy){
+					result = false;
+			} else if (direct == 270 
+				&& this.x - this.speed <= (game.obsticals[t].x + game.obsticals[t].maxx) 
+				&& this.y > game.obsticals[t].y 
+				&& this.y < game.obsticals[t].maxy + game.obsticals[t].y
+				&& this.x > game.obsticals[t].x){
+					result = false;
 			}
 		}
 		return result;
@@ -279,6 +295,20 @@ class Tool{
 		game.ctx.drawImage(ss, this.xcolnum, this.ycolnum, 32, 32, this.x, this.y, 16, 16);
 		//game.ctx.fillStyle = "grey";
 		//game.ctx.fillRect(this.x, this.y, 20, 20);
+	}
+}
+class Obstacles{
+	constructor(x, y, xcord, ycord, xgrab, ygrab){
+		this.x = x;
+		this.y = y;
+		this.xcord = xcord;
+		this.ycord = ycord;
+		this.maxx = xgrab;
+		this.maxy = ygrab;
+	}
+	update(){
+		console.log("obstical")
+		game.ctx.drawImage(oo, this.xcord, this.ycord, this.maxx, this.maxy, this.x, this.y, this.maxx, this.maxy);
 	}
 }
 //characters
