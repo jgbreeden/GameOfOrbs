@@ -12,6 +12,7 @@ var game = {
 		this.interval2 = setInterval(adden, 5000);
 		this.interval3 = setInterval(addtool, 10000);
 		this.enemies.push(this.addenemie());
+	
 	},
 	clear : function() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

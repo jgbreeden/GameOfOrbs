@@ -44,7 +44,7 @@
 		<img src="images/rogue.png" class="rogue">
 		
 		
-		<button onclick="main()" class="btnplay">Play</button>
+		<button onclick="cont()" class="btncon">Continue</button>
 		
 		<img src="images/wizast.PNG" class="wizast">
 		<img src="images/knightst.PNG" class="knightst">
@@ -58,47 +58,44 @@
 	</div>
 	
 	<canvas id="game"></canvas>
-	
 
 	
 	<div id="places" style="display:none">
-		
-		<ul class="a">
-		  <li>Health
-		  <img src="images/pxheart.png" class="heart"> <br>
-		  <br>
-		  <input type="text" id="hp" readonly>
-		  <br>
-		  <img src="images/bar1.png" class="bar" id="hpbar">
-		  </li>
-		  <li>Defense
-		  <img src="images/pxsheild.png" class="sheild"><br>
-		  <br>
-		  <input type="text" id="df"readonly>
-		  </li>
-		  <li>Power
-		  <img src="images/pxbolt.png" class="bolt">
-		  <br>
-		  <input type="text" readonly>
-		  </li>
-		</ul>
-		<ul id="tlset">
-		</ul>		
-		
-			
-			
-			
-			
+		<button onclick="main()" class="btnplay">Play</button>
 		<p class="plctitle"> Select starting point</p>
 		<select id="place" onchange="setplace(this.value)">
 			<option value="desert">Desert</option>
 			<option value="forest">Forest</option>
 			<option value="artic">Artic</option>
 		</select>
-	
-	
 	</div>
 	
+	<div id="invtl" style="display:none">
+		
+		<ul class="a" > 
+		
+			<li>Health
+			<img src="images/pxheart.png" class="heart"> <br>
+			<br>
+			<input type="text" id="hp" readonly>
+			<br>
+			</li>
+			<li>Defense
+			<img src="images/pxsheild.png" class="sheild"><br>
+			<br>
+			<input type="text" id="df"readonly>
+			</li>
+			<li>Power
+			<img src="images/pxbolt.png" class="bolt">
+			<br>
+			<input type="text" readonly>
+			</li>
+		  </ul>
+		  <ul id="tlset">
+		  </ul>
+		  </p>
+		  <p class="invtitle">Inventory</p>
+	</div>
 
 	
 	
