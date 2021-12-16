@@ -31,6 +31,7 @@ function start(){
 	getData("boss.json", bosslist);
 	getData("obsticals.json", obsticallist);
 }
+
 function setChar(chara){
 	if (chara == "char1"){
 		console.log("Knight stats");
@@ -49,7 +50,16 @@ function setplace(plc){
 		bg.src = "images/artic.png";
 	}
 }
+
+function cont() {
+	document.getElementById("character").style.display = "none";
+	document.getElementById("places").style.display = "block";
+	document.getElementById("game").style.display = "block";
+	document.getElementById("invtl").style.display = "none";
+}	
 function main() {
+	document.getElementById("invtl").style.display = "block";
+	document.getElementById("places").style.display = "none";
 	game.boss = new Boss;
 	addEventListener("keydown", function (e) {
 		keysdown[e.keyCode] = true;
@@ -58,12 +68,14 @@ function main() {
 	addEventListener("keyup", function (e) {
 		delete keysdown[e.keyCode];
 	}, false);
-	document.getElementById("character").style.display = "none";
-	document.getElementById("places").style.display = "block";
-	document.getElementById("game").style.display = "block";
+	console.log("main");
+	
+	
 	player = new Player();
 	MainSet();
 }
+
+
 function update () {
 	game.clear();
 	//draw the background
@@ -305,3 +317,4 @@ function showInv() {
 	tlset = document.getElementById("tlset");
 	tlset.innerHTML = text;
 }
+
