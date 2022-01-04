@@ -125,7 +125,10 @@ function update () {
 	if (game.boss != null){
 		game.boss.update();
 	}
-	game.obsticals[0].update();
+	for (let h = 0; h < game.obsticals.length; h++){
+		game.obsticals[h].update();
+		console.log(h);
+	}
 	//check for contact
 }
 function stbat(){
@@ -288,7 +291,10 @@ function MainSet(){
 	for (let j = 0; j < playerlist[p].inventory.length; j++){
 		player.inventory.push(playerlist[p].inventory[j]);
 	}
-	game.obsticals.push(new Obstacles (obsticallist[b].obsticles[0].x, obsticallist[b].obsticles[0].y, obsticallist[b].obsticles[0].xcord, obsticallist[b].obsticles[0].ycord, obsticallist[b].obsticles[0].xgrab, obsticallist[b].obsticles[0].ygrab));
+	for (let h = 0; h < obsticallist[b].obsticles.length; h++){
+		console.log(obsticallist[b].obsticles.length);
+		game.obsticals.push(new Obstacles (obsticallist[b].obsticles[h].x, obsticallist[b].obsticles[h].y, obsticallist[b].obsticles[h].xcord, obsticallist[b].obsticles[h].ycord, obsticallist[b].obsticles[h].xgrab, obsticallist[b].obsticles[h].ygrab));
+	}
 	player.x = 0;
 	player.y = 0;
 	game.boss.power = bosslist[b].power;
@@ -317,4 +323,3 @@ function showInv() {
 	tlset = document.getElementById("tlset");
 	tlset.innerHTML = text;
 }
-

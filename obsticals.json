@@ -1,14 +1,17 @@
 [
 	{"area" : "forest",
         "obsticles":
-			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 310, "ycord" : 0, "xgrab" : 80, "ygrab" :98} ]
+			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 310, "ycord" : 0, "xgrab" : 80, "ygrab" :98},
+                {"name": "tree", "x" : 173, "y" : 267, "xcord" : 210, "ycord" : 0, "xgrab" : 100, "ygrab" :98} ]
     },
 	{"area" : "desert",
         "obsticles":
-			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 0, "ycord" : 0, "xgrab" : 100, "ygrab" :98} ]
+			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 0, "ycord" : 0, "xgrab" : 100, "ygrab" :98},
+                {"name": "tree", "x" : 156, "y" : 112, "xcord" : 0, "ycord" : 98, "xgrab" : 100, "ygrab" :84} ]
     },
 	{"area" : "artic",
         "obsticles":
-			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 100, "ycord" : 98, "xgrab" : 110, "ygrab" :84} ]
+			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 100, "ycord" : 98, "xgrab" : 110, "ygrab" :84},
+                {"name": "tree", "x" : 312, "y" : 64, "xcord" : 100, "ycord" : 98, "xgrab" : 110, "ygrab" :84} ]
     }
 ]

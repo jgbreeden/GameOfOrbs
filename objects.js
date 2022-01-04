@@ -83,7 +83,7 @@ class Character {
 		for (let t = 0; t < game.obsticals.length; t++){
 			if (direct == 0 
 				&& this.y - this.speed <= (game.obsticals[t].y + game.obsticals[t].maxy) 
-				&& this.x > game.obsticals[t].x 
+				&& this.x > game.obsticals[t].x - 20
 				&& this.x < game.obsticals[t].maxx + game.obsticals[t].x
 				&& this.y > game.obsticals[t].y - 20){
 					result = false;
@@ -95,7 +95,7 @@ class Character {
 					result = false;
 			} else if (direct == 180 
 				&& this.y + this.speed >= (game.obsticals[t].y - 20) 
-				&& this.x > game.obsticals[t].x 
+				&& this.x > game.obsticals[t].x - 20
 				&& this.x < game.obsticals[t].maxx + game.obsticals[t].x
 				&& this.y < game.obsticals[t].y + game.obsticals[t].maxy){
 					result = false;
@@ -329,7 +329,6 @@ class Obstacles{
 		this.maxy = ygrab;
 	}
 	update(){
-		console.log("obstical")
 		game.ctx.drawImage(oo, this.xcord, this.ycord, this.maxx, this.maxy, this.x, this.y, this.maxx, this.maxy);
 	}
 }
