@@ -3,7 +3,8 @@
 		"inventory":
 			[	{"name": "sword", "type": "Weapon", "power": 10, "healing": false, "color":"grey", "xcolnum" : 0, "ycolnum" : 1},
 				{"name": "sheild", "type": "Armor", "power": 5, "healing": false, "color":"grey", "xcolnum" : 1, "ycolnum" : 3},
-				{"name": "armor", "type": "Armor", "power": 6, "healing": false, "color":"grey", "xcolnum" : 0, "ycolnum" : 5}
+				{"name": "armor", "type": "Armor", "power": 6, "healing": false, "color":"grey", "xcolnum" : 0, "ycolnum" : 5},
+				{"name": "orb", "type": "orb", "power": 1000, "healing": false, "color":"brown", "xcolnum" : 9, "ycolnum" : 6}
 			],
 			"xcolnum" : 0, "ycolnum" : 0},
 	{"type": "Wizard", "speed": 3, "power": 2, "defens": 2, "maxhp":75,

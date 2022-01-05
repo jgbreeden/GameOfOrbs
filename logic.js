@@ -127,7 +127,6 @@ function update () {
 	}
 	for (let h = 0; h < game.obsticals.length; h++){
 		game.obsticals[h].update();
-		console.log(h);
 	}
 	//check for contact
 }
@@ -258,7 +257,7 @@ function getData(need, target){
 			}
 		}
 	}
-	xhr.open("GET", need);
+	xhr.open("POST", need);
 	xhr.send();
 }
 function MainSet(){
@@ -289,10 +288,9 @@ function MainSet(){
 	player.xcolnum = 64 * playerlist[p].xcolnum;
 	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
 	for (let j = 0; j < playerlist[p].inventory.length; j++){
-		player.inventory.push(playerlist[p].inventory[j]);
+		player.inventory.push(new Tool (playerlist[p].inventory[j].name, playerlist[p].inventory[j].type, playerlist[p].inventory[j].power, playerlist[p].inventory[j].healing, playerlist[p].inventory[j].color, playerlist[p].inventory[j].xcolnum, playerlist[p].inventory[j].ycolnum));
 	}
 	for (let h = 0; h < obsticallist[b].obsticles.length; h++){
-		console.log(obsticallist[b].obsticles.length);
 		game.obsticals.push(new Obstacles (obsticallist[b].obsticles[h].x, obsticallist[b].obsticles[h].y, obsticallist[b].obsticles[h].xcord, obsticallist[b].obsticles[h].ycord, obsticallist[b].obsticles[h].xgrab, obsticallist[b].obsticles[h].ygrab));
 	}
 	player.x = 0;

@@ -132,6 +132,15 @@ class Player extends Character {
 			}
 			game.ctx.drawImage(dd, colum, row, 60, 55, this.x, this.y, 32, 32);
 		}
+		let f = 0;
+		for (let q = 0; q < this.inventory.length; q++){
+			if (this.inventory[q].type == "orb"){
+				f += 1;
+				this.inventory[q].y = this.y - f * 20;
+				this.inventory[q].x = this.x;
+				this.inventory[q].update();
+			}
+		}
 	}
 	checkkeys(){
 		if (!this.incombat && !this.bossBattle){

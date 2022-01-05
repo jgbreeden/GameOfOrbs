@@ -1,17 +1,22 @@
 [
-	{"area" : "forest",
+	{"area": "forest",
         "obsticles":
-			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 310, "ycord" : 0, "xgrab" : 80, "ygrab" :98},
-                {"name": "tree", "x" : 173, "y" : 267, "xcord" : 210, "ycord" : 0, "xgrab" : 100, "ygrab" :98} ]
+			[	{"name": "tree", "x": 70, "y": 86, "xcord": 310, "ycord": 0, "xgrab": 80, "ygrab": 98},
+                {"name": "tree", "x": 173, "y": 367, "xcord": 210, "ycord": 0, "xgrab": 100, "ygrab": 98},
+                {"name": "tree", "x": 485, "y": 645, "xcord": 210, "ycord": 98, "xgrab": 100, "ygrab": 84},
+                {"name": "tree", "x": 702, "y": 781, "xcord": 310, "ycord": 268, "xgrab": 80, "ygrab": 80} ]
     },
-	{"area" : "desert",
+	{"area": "desert",
         "obsticles":
-			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 0, "ycord" : 0, "xgrab" : 100, "ygrab" :98},
-                {"name": "tree", "x" : 156, "y" : 112, "xcord" : 0, "ycord" : 98, "xgrab" : 100, "ygrab" :84} ]
+			[	{"name": "cactuas", "x": 70, "y": 86, "xcord": 0, "ycord": 0, "xgrab": 100, "ygrab": 98},
+                {"name": "tree", "x": 156, "y": 312, "xcord": 0, "ycord": 98, "xgrab": 100, "ygrab": 84},
+                {"name": "tree", "x": 424, "y": 442, "xcord": 0, "ycord": 268, "xgrab": 100, "ygrab": 80} ]
     },
-	{"area" : "artic",
+	{"area": "artic",
         "obsticles":
-			[	{"name": "tree", "x" : 70, "y" : 86, "xcord" : 100, "ycord" : 98, "xgrab" : 110, "ygrab" :84},
-                {"name": "tree", "x" : 312, "y" : 64, "xcord" : 100, "ycord" : 98, "xgrab" : 110, "ygrab" :84} ]
+			[	{"name": "ice", "x": 70, "y": 86, "xcord": 100, "ycord": 98, "xgrab": 110, "ygrab": 84},
+                {"name": "tree", "x": 312, "y": 278, "xcord": 100, "ycord": 98, "xgrab": 110, "ygrab": 84},
+                {"name": "tree", "x": 1012, "y": 208, "xcord": 310, "ycord": 98, "xgrab": 80, "ygrab": 84},
+                {"name": "tree", "x": 644, "y": 370, "xcord": 100, "ycord": 268, "xgrab": 110, "ygrab": 80} ]
     }
 ]
