@@ -288,6 +288,15 @@ class Boss extends Character {
 		if(this.distance()){
 			player.bossBattle = true;
 		}
+		let f = 0;
+		for (let q = 0; q < this.inventory.length; q++){
+			if (this.inventory[q].type == "orb"){
+				f += 1;
+				this.inventory[q].y = this.y - f * 20;
+				this.inventory[q].x = this.x;
+				this.inventory[q].update();
+			}
+		}
 	}
 	distance(){
 		var dis = Math.sqrt((player.x - this.x)**2 + (player.y - this.y)**2)
@@ -310,12 +319,17 @@ class Tool{
 			this.x = Math.floor(Math.random() * (game.canvas.width - 20));
 			this.y = Math.floor(Math.random() * (game.canvas.height - 20));
 			g = false;
+			let j = 0;
 			for (let t = 0; t < game.obsticals.length; t++){
 				if (this.y <= (game.obsticals[t].y + game.obsticals[t].maxy) 
 					&& this.x > game.obsticals[t].x 
 					&& this.x < game.obsticals[t].maxx + game.obsticals[t].x
 					&& this.y > game.obsticals[t].y - 20){
-						g = true;
+						if (j < game.obsticals.length){
+							j += 1;
+						} else {
+							g = true;
+						}
 				}
 			}
 		}

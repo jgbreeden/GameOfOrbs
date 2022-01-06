@@ -1,5 +1,11 @@
 [
-	{"boss": "King Bear", "inventory1" : "new tool ('Green Orb', 'Orb', false, false, 'Green')", "power": 1000, "defens": 70, "maxhp":300, "xcolnum" : 1, "ycolnum" : 2},
-	{"boss": "Sarcophagus", "inventory1" : "new tool ('Red Orb', 'Orb', false, false, 'Red')", "power": 200, "defens": 200, "maxhp": 9999, "xcolnum" : 0, "ycolnum" : 0},
-	{"boss": "Robo", "inventory1" : "new tool ('Blue Orb', 'Orb', false, false, 'Blue')", "power": 50, "defens": 9999, "maxhp":35, "xcolnum" : 0, "ycolnum" : 1}
+	{"boss": "King Bear", "inventory1" : [
+		{"name": "orb", "type": "orb", "power": false, "healing": false, "color":"brown", "xcolnum" : 9, "ycolnum" : 6}
+	], "power": 1, "defens": 1, "maxhp":1, "xcolnum" : 1, "ycolnum" : 2},
+	{"boss": "Sarcophagus", "inventory1" : [
+		{"name": "orb", "type": "orb", "power": false, "healing": false, "color":"brown", "xcolnum" : 9, "ycolnum" : 6}
+	], "power": 200, "defens": 200, "maxhp": 9999, "xcolnum" : 0, "ycolnum" : 0},
+	{"boss": "Robo", "inventory1" : [
+		{"name": "orb", "type": "orb", "power": false, "healing": false, "color":"brown", "xcolnum" : 9, "ycolnum" : 6}
+	], "power": 50, "defens": 9999, "maxhp":35, "xcolnum" : 0, "ycolnum" : 1}
 ]

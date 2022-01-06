@@ -236,6 +236,11 @@ function reset1(){
 	game.obsticals = [];
 	MainSet();
 }
+// interlude1:
+	//needs to set a variable to the the players curent eneventory.
+	//needs to swap what version of te reset function is used, as well as what version of mainset will be used so that
+	//the player will keep there items, exp, level and orbs when they go to the next sceen.
+	//cant allow the player to chose the same area twice.
 function adden (){
 	game.enemies.push(game.addenemie());
 }
@@ -301,7 +306,9 @@ function MainSet(){
 	game.boss.health = bosslist[b].maxhp;
 	game.boss.xcolnum = 92 * bosslist[b].xcolnum;
 	game.boss.ycolnum = 92 * bosslist[b].ycolnum;
-	game.boss.inventory = bosslist[b].inventory1;
+	for (let j = 0; j < bosslist[b].inventory1.length; j++){
+		game.boss = new Tool (bosslist[b].inventory1[j].name, bosslist[b].inventory1[j].type, bosslist[b].inventory1[j].power, bosslist[b].inventory1[j].healing, bosslist[b].inventory1[j].color, bosslist[b].inventory1[j].xcolnum, bosslist[b].inventory1[j].ycolnum);
+	}
 	game.boss.x = 1000;
 	game.boss.y = 345;
 	for (j = 0; j < 10; j++){
