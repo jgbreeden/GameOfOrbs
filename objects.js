@@ -3,6 +3,7 @@ var game = {
 	tools : [],
 	Boss : {},
 	obsticals : [],
+	message : false,
 	init : function () {
 		this.canvas = document.getElementById("game");
 		this.canvas.width = 1200;

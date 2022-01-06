@@ -13,7 +13,7 @@ var playerlist = [];
 var hp = {};
 bg.src = "images/desert.png";
 var bosslist = [];
-var obsticallist = []
+var obsticallist = [];
 function start(){
     hp = document.getElementById("hp");
 	hp.value = 0;
@@ -128,6 +128,9 @@ function update () {
 	for (let h = 0; h < game.obsticals.length; h++){
 		game.obsticals[h].update();
 	}
+	if (game.message){
+		next_aria();
+	}
 	//check for contact
 }
 function stbat(){
@@ -173,7 +176,14 @@ function bBattle(){
 		player.inventory.push(game.boss.inventory)
 		game.boss = null;
 		player.bossBattle = false;
+		game.message = true;
 	}
+}
+function next_aria(){
+	console.log("bla bla bla");
+	console.log("bla bla bla");
+	game.ctx.fillText("to aria 1", (game.canvas.width/2 - 20), 20, 200);
+	game.ctx.fillText("to aria 1", (game.canvas.width/2 - 20), game.canvas.height, 200);
 }
 function battle(){
 	var atktot = player.power;
@@ -307,7 +317,7 @@ function MainSet(){
 	game.boss.xcolnum = 92 * bosslist[b].xcolnum;
 	game.boss.ycolnum = 92 * bosslist[b].ycolnum;
 	for (let j = 0; j < bosslist[b].inventory1.length; j++){
-		game.boss = new Tool (bosslist[b].inventory1[j].name, bosslist[b].inventory1[j].type, bosslist[b].inventory1[j].power, bosslist[b].inventory1[j].healing, bosslist[b].inventory1[j].color, bosslist[b].inventory1[j].xcolnum, bosslist[b].inventory1[j].ycolnum);
+		game.boss.inventory1 = new Tool (bosslist[b].inventory1[j].name, bosslist[b].inventory1[j].type, bosslist[b].inventory1[j].power, bosslist[b].inventory1[j].healing, bosslist[b].inventory1[j].color, bosslist[b].inventory1[j].xcolnum, bosslist[b].inventory1[j].ycolnum);
 	}
 	game.boss.x = 1000;
 	game.boss.y = 345;
