@@ -148,3 +148,23 @@ obsticles image
 	col 2 - 110
 	col 3 - 100
 	col 4 - 80
+
+
+proper combat:
+	in te new battles, there will be a big box with the player and oposing enemie(s) above it, with the player's stats
+	under it, then followed by three buttons under that.
+	the first stat will be the players leve, followed by there HP / health points, then with there  MP / magic points, 
+	finaly followed by there EXP / experienc point.
+	then the three buttons ar Attack, skills, and items.
+	the attack button lets you do some basic attacks.
+		- example: slash
+	the skill button lets you do actions and spells ... PS: used to spar enemies
+		- example: stratigize (25% chance to find a weak spot on the enemie (allowing you to do three times as much damage 
+							   in one attack))
+		- example: FireBall
+	the item button allows you to use an item or swap out an item mid battle
+		- example: New sword
+	after selecting one of the buttons, you go into the main box, and while you are in the main box you can select what, out
+	of the multiple options, to do for your turn.
+	after you use your turn, your soul will be put into a battle box, when the enemi will send out a bullet pattur to deal
+	damage to you and where youll have to dodge there attack.
