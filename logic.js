@@ -316,9 +316,9 @@ function MainSet(){
 	game.boss.health = bosslist[b].maxhp;
 	game.boss.xcolnum = 92 * bosslist[b].xcolnum;
 	game.boss.ycolnum = 92 * bosslist[b].ycolnum;
-	for (let j = 0; j < bosslist[b].inventory1.length; j++){
-		game.boss.inventory1 = new Tool (bosslist[b].inventory1[j].name, bosslist[b].inventory1[j].type, bosslist[b].inventory1[j].power, bosslist[b].inventory1[j].healing, bosslist[b].inventory1[j].color, bosslist[b].inventory1[j].xcolnum, bosslist[b].inventory1[j].ycolnum);
-	}
+	console.log(new Tool (bosslist[b].inventory1.name, bosslist[b].inventory1.type, bosslist[b].inventory1.power, bosslist[b].inventory1.healing, bosslist[b].inventory1.color, bosslist[b].inventory1.xcolnum, bosslist[b].inventory1.ycolnum));
+	game.boss.inventory = new Tool (bosslist[b].inventory1.name, bosslist[b].inventory1.type, bosslist[b].inventory1.power, bosslist[b].inventory1.healing, bosslist[b].inventory1.color, bosslist[b].inventory1.xcolnum, bosslist[b].inventory1.ycolnum);
+	console.log(game.boss.inventory);
 	game.boss.x = 1000;
 	game.boss.y = 345;
 	for (j = 0; j < 10; j++){

@@ -289,15 +289,9 @@ class Boss extends Character {
 		if(this.distance()){
 			player.bossBattle = true;
 		}
-		let f = 0;
-		for (let q = 0; q < this.inventory.length; q++){
-			if (this.inventory[q].type == "orb"){
-				f += 1;
-				this.inventory[q].y = this.y - f * 20;
-				this.inventory[q].x = this.x;
-				this.inventory[q].update();
-			}
-		}
+		this.inventory.y = this.y - 20;
+		this.inventory.x = this.x;
+		this.inventory.update();
 	}
 	distance(){
 		var dis = Math.sqrt((player.x - this.x)**2 + (player.y - this.y)**2)

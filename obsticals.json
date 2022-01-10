@@ -3,8 +3,8 @@
         "obsticles":
 			[	{"name": "tree", "x": 70, "y": 86, "xcord": 310, "ycord": 0, "xgrab": 80, "ygrab": 98},
                 {"name": "tree", "x": 173, "y": 367, "xcord": 210, "ycord": 0, "xgrab": 100, "ygrab": 98},
-                {"name": "tree", "x": 485, "y": 645, "xcord": 210, "ycord": 98, "xgrab": 100, "ygrab": 84},
-                {"name": "tree", "x": 702, "y": 781, "xcord": 310, "ycord": 268, "xgrab": 80, "ygrab": 80} ]
+                {"name": "tree", "x": 485, "y": 245, "xcord": 210, "ycord": 98, "xgrab": 100, "ygrab": 84},
+                {"name": "tree", "x": 702, "y": 519, "xcord": 310, "ycord": 268, "xgrab": 80, "ygrab": 80} ]
     },
 	{"area": "desert",
         "obsticles":
