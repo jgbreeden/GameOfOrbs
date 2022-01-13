@@ -14,6 +14,7 @@ var hp = {};
 bg.src = "images/desert.png";
 var bosslist = [];
 var obsticallist = [];
+var inventorysnap = [];
 function start(){
     hp = document.getElementById("hp");
 	hp.value = 0;
@@ -60,7 +61,6 @@ function cont() {
 function main() {
 	document.getElementById("invtl").style.display = "block";
 	document.getElementById("places").style.display = "none";
-	game.boss = new Boss;
 	addEventListener("keydown", function (e) {
 		keysdown[e.keyCode] = true;
 		//console.log(keysdown);
@@ -69,8 +69,14 @@ function main() {
 		delete keysdown[e.keyCode];
 	}, false);
 	console.log("main");
-	
-	
+	var boss = document.getElementById("place").value;
+	if (boss == "desert"){
+		game.ariad = true;
+	} else if (boss == "forest"){
+		game.ariaf = true;
+	} else if (boss == "artic"){
+		game.ariaa = true;
+	}
 	player = new Player();
 	MainSet();
 }
@@ -182,8 +188,34 @@ function bBattle(){
 function next_aria(){
 	console.log("bla bla bla");
 	console.log("bla bla bla");
-	game.ctx.fillText("to aria 1", (game.canvas.width/2 - 20), 20, 200);
-	game.ctx.fillText("to aria 1", (game.canvas.width/2 - 20), game.canvas.height, 200);
+	let message1 = "";
+	let message2 = "";
+	if (game.ariad){
+		message1 = "the artic";
+		message2 = "the forest";
+	} else if (game.ariaf){
+		message1 = "the desert";
+		message2 = "the artic";
+	} else if (game.ariaa){
+		message1 = "the forest";
+		message2 = "the desert";
+	}
+	if (message1 != ""){
+		game.ctx.fillText(message1, (game.canvas.width/2 - 20), 20, 200);
+	}
+	if (message2 != ""){
+		game.ctx.fillText(message2, (game.canvas.width/2 - 20), game.canvas.height, 200);
+	}
+/*	if (game.ariad){
+		game.ctx.fillText("the artic", (game.canvas.width/2 - 20), 20, 200);
+		game.ctx.fillText("the forest", (game.canvas.width/2 - 20), game.canvas.height, 200);
+	} else if (game.ariaf){
+		game.ctx.fillText("the desert", (game.canvas.width/2 - 20), 20, 200);
+		game.ctx.fillText("the artic", (game.canvas.width/2 - 20), game.canvas.height, 200);
+	} else if (game.ariaa){
+		game.ctx.fillText("the forest", (game.canvas.width/2 - 20), 20, 200);
+		game.ctx.fillText("the desert", (game.canvas.width/2 - 20), game.canvas.height, 200);
+	}*/
 }
 function battle(){
 	var atktot = player.power;
@@ -276,6 +308,7 @@ function getData(need, target){
 	xhr.send();
 }
 function MainSet(){
+	game.message = false;
 	game.init();
 	var valu = document.getElementById("char").value;
 	var p = 0
@@ -310,6 +343,7 @@ function MainSet(){
 	}
 	player.x = 0;
 	player.y = 0;
+	game.boss = new Boss;
 	game.boss.power = bosslist[b].power;
 	game.boss.defens = bosslist[b].defens;
 	game.boss.maxhp = bosslist[b].maxhp;
@@ -337,4 +371,7 @@ function showInv() {
 	}
 	tlset = document.getElementById("tlset");
 	tlset.innerHTML = text;
+}
+function setScene(){
+	       
 }

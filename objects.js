@@ -4,6 +4,9 @@ var game = {
 	Boss : {},
 	obsticals : [],
 	message : false,
+	ariad: false,
+	ariaf: false,
+	ariaa: false,
 	init : function () {
 		this.canvas = document.getElementById("game");
 		this.canvas.width = 1200;
