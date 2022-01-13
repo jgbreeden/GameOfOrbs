@@ -141,8 +141,12 @@ class Player extends Character {
 				this.inventory[q].x = this.x;
 				this.inventory[q].update();
 			}
+		} 
+		if (game.message){
+		checkexit();
 		}
-	}
+	} 
+	
 	checkkeys(){
 		if (!this.incombat && !this.bossBattle){
 			if (keysdown[40] && this.y < (game.canvas.height - 20) && this.no_obstical(180)){
@@ -160,6 +164,10 @@ class Player extends Character {
 		} else {
 			this.cframe += 1;
 		}
+	}
+	checkexit(){
+		// if distance to top message less than 10 than reset scene call scene reset
+		setScene;
 	}
 }
 class Enemis extends Character {
