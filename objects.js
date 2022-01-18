@@ -146,7 +146,7 @@ class Player extends Character {
 			}
 		} 
 		if (game.message){
-		checkexit();
+			this.checkexit();
 		}
 	} 
 	
@@ -169,8 +169,15 @@ class Player extends Character {
 		}
 	}
 	checkexit(){
-		// if distance to top message less than 10 than reset scene call scene reset
-		setScene;
+		if (this.x > game.canvas.width / 2 - 10 && this.x < game.canvas.width / 2 + 10){
+			if (this.y < 5){
+				setScene("top");
+			} 
+			else if (this.y > game.canvas.height - 5){
+				setScene("bottom");
+			}
+		}
+
 	}
 }
 class Enemis extends Character {
