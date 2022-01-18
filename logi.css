@@ -98,13 +98,13 @@ canvas {
 
 #place {
 	 position: absolute;
-	  top: 70px;
-  left: 1000px;
-  right: 4px;
-  width: 200px;
-  height: 36px;
+	  top: 9%;
+  left: 50%;
+  right: 10%;
+  width: 20%;
+  height: 5%;
     font-family: 'Aclonica';
-	font-size: 30px;
+	font-size: 100%;
 	 color: #0e1a25;
 	background-color: #4d4d4d;
 	letter-spacing: 6px;
@@ -116,10 +116,10 @@ canvas {
 
 .plctitle {
 	 position: absolute;
-	  top: 0px;
-  left: 200px;
+	  top: 5%;
+  left: 5%;
  
-  font-size: 50px;
+  font-size: 200%;
   color: #152737;
   font-family: 'Arbutus';
   text-shadow: 2px 2px 3px #999999;
@@ -232,6 +232,12 @@ canvas {
 .roguest {
 	position: absolute;
 	top: 490px;
+  left: 1190px;
+  right: 4px;
+  height: 230px;
+  width: 300px;
+
+  top: 400px;
   left: 1190px;
   right: 4px;
   height: 230px;
