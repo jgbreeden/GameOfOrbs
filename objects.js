@@ -120,6 +120,7 @@ class Player extends Character {
 		this.speed = 3;
 		this.bossBattle = false;
 		this.dust = 1;
+		this.OGinventory = [];
 	}
 	update(){
 		this.checkkeys();

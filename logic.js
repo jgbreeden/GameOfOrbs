@@ -77,7 +77,20 @@ function main() {
 	} else if (boss == "artic"){
 		game.ariaa = true;
 	}
+	game.init();
 	player = new Player();
+	var valu = document.getElementById("char").value;
+	var p = 0
+	if (valu == "char1"){
+		p = 0;
+	} else if (valu == "char2"){
+		p = 1;
+	} else if (valu == "char3"){
+		p = 2;
+	}
+	for (let j = 0; j < playerlist[p].inventory.length; j++){
+		player.OGinventory.push(new Tool (playerlist[p].inventory[j].name, playerlist[p].inventory[j].type, playerlist[p].inventory[j].power, playerlist[p].inventory[j].healing, playerlist[p].inventory[j].color, playerlist[p].inventory[j].xcolnum, playerlist[p].inventory[j].ycolnum));
+	}
 	MainSet();
 }
 
@@ -190,15 +203,28 @@ function next_aria(){
 	console.log("bla bla bla");
 	let message1 = "";
 	let message2 = "";
-	if (game.ariad){
-		message1 = "the artic";
-		message2 = "the forest";
-	} else if (game.ariaf){
-		message1 = "the desert";
-		message2 = "the artic";
-	} else if (game.ariaa){
-		message1 = "the forest";
-		message2 = "the desert";
+	let boss = document.getElementById("place").value;
+	if (boss == "forest"){
+		if (!game.ariaa){
+			message1 = "the artic";
+		}
+		if (!game.ariaf){
+			message2 = "the forest";
+		}
+	} else if (boss == "forest"){
+		if (!game.ariad){
+			message1 = "the desert";
+		}
+		if (!game.ariaa){
+			message2 = "the artic";
+		}
+	} else if (boss == "artic"){
+		if (!game.ariaf){
+			message1 = "the forest";
+		}
+		if (!game.ariad){
+			message2 = "the desert";
+		}
 	}
 	if (message1 != ""){
 		game.ctx.fillText(message1, (game.canvas.width/2 - 20), 20, 200);
@@ -269,6 +295,7 @@ function battle(){
 	}
 }
 function reset1(){
+	game.init();
 	clearInterval(game.interval1);
 	clearInterval(game.interval2);
 	clearInterval(game.interval3);
@@ -309,7 +336,6 @@ function getData(need, target){
 }
 function MainSet(){
 	game.message = false;
-	game.init();
 	var valu = document.getElementById("char").value;
 	var p = 0
 	if (valu == "char1"){
@@ -335,8 +361,8 @@ function MainSet(){
 	player.health = playerlist[p].maxhp;
 	player.xcolnum = 64 * playerlist[p].xcolnum;
 	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
-	for (let j = 0; j < playerlist[p].inventory.length; j++){
-		player.inventory.push(new Tool (playerlist[p].inventory[j].name, playerlist[p].inventory[j].type, playerlist[p].inventory[j].power, playerlist[p].inventory[j].healing, playerlist[p].inventory[j].color, playerlist[p].inventory[j].xcolnum, playerlist[p].inventory[j].ycolnum));
+	for (let j = 0; j < player.OGinventory.length; j++){
+		player.inventory.push(player.OGinventory[j]);
 	}
 	for (let h = 0; h < obsticallist[b].obsticles.length; h++){
 		game.obsticals.push(new Obstacles (obsticallist[b].obsticles[h].x, obsticallist[b].obsticles[h].y, obsticallist[b].obsticles[h].xcord, obsticallist[b].obsticles[h].ycord, obsticallist[b].obsticles[h].xgrab, obsticallist[b].obsticles[h].ygrab));
