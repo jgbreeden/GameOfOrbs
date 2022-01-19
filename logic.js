@@ -396,6 +396,15 @@ function showInv() {
 	tlset = document.getElementById("tlset");
 	tlset.innerHTML = text;
 }
-function setScene(){
-	       
+function setScene(label){
+	    if (label == "top"){
+			setplace("artic")
+			document.getElementById("place").value = "artic"
+			game.obsticals = []
+			MainSet()
+		}
+
+		else if (label == "bottom"){
+			console.log("bottom")
+		} 
 }
