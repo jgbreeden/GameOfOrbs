@@ -69,14 +69,6 @@ function main() {
 		delete keysdown[e.keyCode];
 	}, false);
 	console.log("main");
-	var boss = document.getElementById("place").value;
-	if (boss == "desert"){
-		game.ariad = true;
-	} else if (boss == "forest"){
-		game.ariaf = true;
-	} else if (boss == "artic"){
-		game.ariaa = true;
-	}
 	game.init();
 	player = new Player();
 	var valu = document.getElementById("char").value;
@@ -97,6 +89,14 @@ function main() {
 
 function update () {
 	game.clear();
+	let boss = document.getElementById("place").value;
+	if (boss == "desert"){
+		game.ariad = true;
+	} else if (boss == "forest"){
+		game.ariaf = true;
+	} else if (boss == "artic"){
+		game.ariaa = true;
+	}
 	//draw the background
 // 	game.ctx.fillStyle = "green";
 	game.ctx.drawImage(bg, 0, 0);
@@ -199,12 +199,10 @@ function bBattle(){
 	}
 }
 function next_aria(){
-	console.log("bla bla bla");
-	console.log("bla bla bla");
 	let message1 = "";
 	let message2 = "";
 	let boss = document.getElementById("place").value;
-	if (boss == "forest"){
+	if (boss == "desert"){
 		if (!game.ariaa){
 			message1 = "the artic";
 		}
@@ -230,7 +228,7 @@ function next_aria(){
 		game.ctx.fillText(message1, (game.canvas.width/2 - 20), 20, 200);
 	}
 	if (message2 != ""){
-		game.ctx.fillText(message2, (game.canvas.width/2 - 20), game.canvas.height, 200);
+		game.ctx.fillText(message2, (game.canvas.width/2 - 20), game.canvas.height - 20, 200);
 	}
 /*	if (game.ariad){
 		game.ctx.fillText("the artic", (game.canvas.width/2 - 20), 20, 200);
