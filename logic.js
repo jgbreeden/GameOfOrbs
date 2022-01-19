@@ -199,8 +199,6 @@ function bBattle(){
 	}
 }
 function next_aria(){
-	console.log("bla bla bla");
-	console.log("bla bla bla");
 	let message1 = "";
 	let message2 = "";
 	let boss = document.getElementById("place").value;
@@ -230,7 +228,7 @@ function next_aria(){
 		game.ctx.fillText(message1, (game.canvas.width/2 - 20), 20, 200);
 	}
 	if (message2 != ""){
-		game.ctx.fillText(message2, (game.canvas.width/2 - 20), game.canvas.height, 200);
+		game.ctx.fillText(message2, (game.canvas.width/2 -20), game.canvas.height, 200);
 	}
 /*	if (game.ariad){
 		game.ctx.fillText("the artic", (game.canvas.width/2 - 20), 20, 200);
@@ -398,6 +396,15 @@ function showInv() {
 	tlset = document.getElementById("tlset");
 	tlset.innerHTML = text;
 }
-function setScene(){
-	       
+function setScene(label){
+	    if (label == "top"){
+			setplace("artic")
+			document.getElementById("place").value = "artic"
+			game.obsticals = []
+			MainSet()
+		}
+
+		else if (label == "bottom"){
+			console.log("bottom")
+		} 
 }
