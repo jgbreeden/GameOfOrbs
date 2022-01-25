@@ -397,14 +397,36 @@ function showInv() {
 	tlset.innerHTML = text;
 }
 function setScene(label){
+	let boss = document.getElementById("place").value;
 	    if (label == "top"){
-			setplace("artic")
-			document.getElementById("place").value = "artic"
+			if (boss == "desert"){
+				setplace("artic")
+				document.getElementById("place").value = "artic"
+			} else if (boss == "forest"){
+				setplace("desert")
+				document.getElementById("place").value = "desert"
+			} else if (boss == "artic"){
+				setplace("forest")
+				document.getElementById("place").value = "forest"
+			}
 			game.obsticals = []
 			MainSet()
+			console.log("top")
 		}
 
 		else if (label == "bottom"){
+			if (boss == "desert"){
+				setplace("forest")
+				document.getElementById("place").value = "forest"
+			} else if (boss == "forest"){
+				setplace("artic")
+				document.getElementById("place").value = "artic"
+			} else if (boss == "artic"){
+				setplace("desert")
+				document.getElementById("place").value = "desert"
+			}
+			game.obsticals = []
+			MainSet()
 			console.log("bottom")
 		} 
 }
