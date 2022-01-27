@@ -365,6 +365,7 @@ function MainSet(){
 	for (let j = 0; j < player.OGinventory.length; j++){
 		player.inventory.push(player.OGinventory[j]);
 	}
+	showInv()
 	for (let h = 0; h < obsticallist[b].obsticles.length; h++){
 		game.obsticals.push(new Obstacles (obsticallist[b].obsticles[h].x, obsticallist[b].obsticles[h].y, obsticallist[b].obsticles[h].xcord, obsticallist[b].obsticles[h].ycord, obsticallist[b].obsticles[h].xgrab, obsticallist[b].obsticles[h].ygrab));
 	}
