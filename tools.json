@@ -3,7 +3,7 @@
 	{"name": "sheild", "type": "Armor", "power": 5, "healing": false, "color":"grey", "xcolnum" : 1, "ycolnum" : 3},
 	{"name": "armor", "type": "Armor", "power": 6, "healing": false, "color":"grey", "xcolnum" : 0, "ycolnum" : 5},
 	{"name": "staff", "type": "Weapon", "power": 7, "healing": false, "color":"grey", "xcolnum" : 5, "ycolnum" : 2},
-	{"name": "spell book", "type": "Magic", "power": false, "healing": false, "color":"grey", "xcolnum" : 1, "ycolnum" : 10},
+	{"name": "spell book", "type": "Magic", "power": 2.5, "healing": false, "color":"grey", "xcolnum" : 1, "ycolnum" : 10},
 	{"name": "wizzard cloak", "type": "Armor", "power": 4, "healing": false, "color":"grey", "xcolnum" : 9, "ycolnum" : 5},
 	{"name": "dagger", "type": "Weapon", "power": 3, "healing": false, "color":"grey", "xcolnum" : 7, "ycolnum" : 0},
 	{"name": "rogue cloak", "type": "Armor", "power": 1, "healing": false, "color":"black", "xcolnum" : 9, "ycolnum" : 5},

@@ -14,9 +14,9 @@ var game = {
 		this.ctx = this.canvas.getContext("2d");
 		this.interval1 = setInterval(update, 20);
 		this.interval2 = setInterval(adden, 5000);
-		this.interval3 = setInterval(addtool, 10000);
+		this.interval3 = setInterval(addtool, (10000/toolTime));
+		console.log(10000/toolTime);
 		this.enemies.push(this.addenemie());
-	
 	},
 	clear : function() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -56,8 +56,8 @@ var game = {
 		newen.x = x;
 		newen.y = y;
 		newen.health = hp;
-		newen.power = atk;
-		newen.defens = def;
+		newen.power = atk * bossp;
+		newen.defens = def * bossp;
 		newen.speed = speed;
 		newen.xcolnum = 67 * xcolnum;
 		newen.ycolnum = 67 * ycolnum;

@@ -11,6 +11,8 @@ var toolset = [];
 var enemieslist = [];
 var playerlist = [];
 var hp = {};
+var bossp = 1;
+var toolTime = 1;
 bg.src = "images/desert.png";
 var bosslist = [];
 var obsticallist = [];
@@ -168,13 +170,13 @@ function stbat(){
 function bBattle(){
 	var atktot = player.power;
 	for (g = 0; g < player.inventory.length; g++){
-		if (player.inventory[g].type == "Weapon"){
+		if (player.inventory[g].type == "Weapon" || player.inventory[g].type == "Magic"){
 			atktot += player.inventory[g].power;
 		}
 	}
 	var deftot = player.power;
 	for (g = 0; g < player.inventory.length; g++){
-		if (player.inventory[g].type == "Armor"){
+		if (player.inventory[g].type == "Armor" || player.inventory[g].type == "Magic"){
 			deftot += player.inventory[g].power;
 		}
 	}
@@ -244,13 +246,13 @@ function next_aria(){
 function battle(){
 	var atktot = player.power;
 	for (g = 0; g < player.inventory.length; g++){
-		if (player.inventory[g].type == "Weapon"){
+		if (player.inventory[g].type == "Weapon" || player.inventory[g].type == "Magic"){
 			atktot += player.inventory[g].power;
 		}
 	}
 	var deftot = player.power;
 	for (g = 0; g < player.inventory.length; g++){
-		if (player.inventory[g].type == "Armor"){
+		if (player.inventory[g].type == "Armor" || player.inventory[g].type == "Magic"){
 			deftot += player.inventory[g].power;
 		}
 	}
@@ -359,6 +361,7 @@ function MainSet(){
 	player.health = playerlist[p].maxhp;
 	player.xcolnum = 64 * playerlist[p].xcolnum;
 	player.ycolnum = 64 * (2 + playerlist[p].ycolnum);
+	player.inventory = []
 	for (let j = 0; j < player.OGinventory.length; j++){
 		player.inventory.push(player.OGinventory[j]);
 	}
@@ -368,8 +371,10 @@ function MainSet(){
 	player.x = 0;
 	player.y = 0;
 	game.boss = new Boss;
-	game.boss.power = bosslist[b].power;
-	game.boss.defens = bosslist[b].defens;
+	game.boss.power = bosslist[b].power * bossp;
+	game.boss.defens = bosslist[b].defens * bossp;
+	console.log(game.boss.power);
+	console.log(game.boss.defens);
 	game.boss.maxhp = bosslist[b].maxhp;
 	game.boss.health = bosslist[b].maxhp;
 	game.boss.xcolnum = 92 * bosslist[b].xcolnum;
@@ -398,35 +403,64 @@ function showInv() {
 }
 function setScene(label){
 	let boss = document.getElementById("place").value;
-	    if (label == "top"){
-			if (boss == "desert"){
+	if (label == "top"){
+		if (boss == "desert"){
+			if(!game.ariaa){
 				setplace("artic")
 				document.getElementById("place").value = "artic"
-			} else if (boss == "forest"){
+				moving()
+				console.log("top")
+			}
+		} else if (boss == "forest"){
+			if(!game.ariad){
 				setplace("desert")
 				document.getElementById("place").value = "desert"
-			} else if (boss == "artic"){
+				moving()
+				console.log("top")
+			}
+		} else if (boss == "artic"){
+			if(!game.ariaf){
 				setplace("forest")
 				document.getElementById("place").value = "forest"
+				moving()
+				console.log("top")
 			}
-			game.obsticals = []
-			MainSet()
-			console.log("top")
 		}
-
-		else if (label == "bottom"){
-			if (boss == "desert"){
+	}
+	else if (label == "bottom"){
+		if (boss == "desert"){
+			if(!game.ariaf){
 				setplace("forest")
 				document.getElementById("place").value = "forest"
-			} else if (boss == "forest"){
+				moving()
+				console.log("bottom")
+			}
+		} else if (boss == "forest"){
+			if(!game.ariaa){
 				setplace("artic")
 				document.getElementById("place").value = "artic"
-			} else if (boss == "artic"){
+				moving()
+				console.log("bottom")
+			}
+		} else if (boss == "artic"){
+			if(!game.ariad){
 				setplace("desert")
 				document.getElementById("place").value = "desert"
+				moving()
+				console.log("bottom")
 			}
-			game.obsticals = []
-			MainSet()
-			console.log("bottom")
-		} 
+		}
+	} 
+}
+function moving(){
+	player.OGinventory = [];
+	for (let p = 0; p < player.inventory.length; p++){
+		player.OGinventory.push(player.inventory[p]);
+	}
+	bossp += bossp + bossp/2;
+	toolTime += 1;
+	game.obsticals = [];
+	game.tools = [];
+	game.enemies = [];
+	reset1()
 }

@@ -9,7 +9,7 @@
 	{"type": "Wizard", "speed": 3, "power": 2, "defens": 2, "maxhp":75,
 		"inventory":
 			[	{"name": "staff", "type": "Weapon", "power": 7, "healing": false, "color":"grey", "xcolnum" : 5, "ycolnum" : 2},
-				{"name": "spell book", "type": "Magic", "power": false, "healing": false, "color":"grey", "xcolnum" : 1, "ycolnum" : 10},
+				{"name": "spell book", "type": "Magic", "power": 5.5, "healing": false, "color":"grey", "xcolnum" : 1, "ycolnum" : 10},
 				{"name": "wizzard cloak", "type": "Armor", "power": 4, "healing": false, "color":"grey", "xcolnum" : 9, "ycolnum" : 5}
 			],
 			"xcolnum" : 0, "ycolnum" : 1},
