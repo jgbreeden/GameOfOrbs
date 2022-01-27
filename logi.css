@@ -29,25 +29,23 @@ canvas {
 	  position: fixed;
 	font-family: 'Arbutus';
 	  font-weight: bold;
-	font-size: 80px;
+	font-size: 270%;
 	  text-shadow: 7px 7px 8px #cccccc;
 	    letter-spacing: 25px;
 	color: #003333;
   position: absolute;
-  top: 75px;
-  left: 125px;
-  right: 4px;
+  top: 8%;
+  left: 20%;
 	
 }
 
 .btnstart {
 	  position: fixed;
 	 position: absolute;
-  top: 300px;
-  left: 440px;
-  right: 4px;
+  top: 90%;
+  right: 40%;
   font-family: 'Arbutus';
-  font-size: 75px;
+  font-size: 120%;
   	color: #0e1a25;
 	 text-shadow: 2px 2px 3px #999999;
   letter-spacing: 15px;
@@ -65,11 +63,9 @@ canvas {
 .chartitle {
 
 	position: absolute;
-  top: 15px;
-  left: 350px;
-  right: 4px;
-    font-size: 20vw;
-  font-size: 60px;
+  top: 2%;
+  left: 26%;
+  font-size: 300%;
   color: #152737;
   font-family: 'Arbutus';
   text-shadow: 2px 2px 3px #999999;
@@ -79,19 +75,18 @@ canvas {
 }
 
 #char {
-	 position: absolute;
-	  top: 210px;
-  left: 810px;
-  right: 4px;
-  width: 200px;
-  height: 36px;
-    font-family: 'Aclonica';
-	font-size: 30px;
-	 color: #0e1a25;
-	background-color: #4d4d4d;
-	letter-spacing: 6px;
-	text-shadow: 2px 2px 3px #999999;
-	border-style: inset;
+  position: absolute;
+  top: 25%;
+  left: 21%;
+width: 20%;
+height: 5%;
+  font-family: 'Aclonica';
+font-size: 140%;
+ color: #0e1a25;
+background-color: #4d4d4d;
+letter-spacing: 6px;
+text-shadow: 2px 2px 3px #999999;
+border-style: inset;
 		
 		 
 }
@@ -99,12 +94,11 @@ canvas {
 #place {
 	 position: absolute;
 	  top: 9%;
-  left: 50%;
-  right: 10%;
+  right: 34%;
   width: 20%;
   height: 5%;
     font-family: 'Aclonica';
-	font-size: 100%;
+	font-size: 115%;
 	 color: #0e1a25;
 	background-color: #4d4d4d;
 	letter-spacing: 6px;
@@ -118,8 +112,7 @@ canvas {
 	 position: absolute;
 	  top: 5%;
   left: 5%;
- 
-  font-size: 200%;
+  font-size: 215%;
   color: #152737;
   font-family: 'Arbutus';
   text-shadow: 2px 2px 3px #999999;
@@ -127,11 +120,10 @@ canvas {
 
 .btncon {
 	position: absolute;
-	top: 190px;
-  left: 370px;
-  right: 4px;
+  top: 24%;
+  right: 28%;
    font-family: 'Arbutus';
-	  font-size: 50px;
+	  font-size: 214%;
 	  	 text-shadow: 2px 2px 3px #999999;
   letter-spacing: 9px;
   background-color: inherit;
@@ -150,9 +142,8 @@ canvas {
 
 .btnplay {
 	position: absolute;
-	top: 45px;
-  
-  right: 20px;
+ top: 6%;
+ right: 8%;
    font-family: 'Arbutus';
 	  font-size: 70px;
 	  	 text-shadow: 2px 2px 3px #999999;
@@ -172,38 +163,34 @@ canvas {
 
 .wiza {
 	position: absolute;
-	top: 230px;
-  left: 480px;
-  right: 4px;
-  height: 500px;
-  width: 380px;
+  top: 30%;
+  right: 30%;
+  height: 65%;
+  width: 20%;
 }
 
 .knight {
 	position: absolute;
-	top: 250px;
-  left: 0px;
-  right: 4px;
-  height: 500px;
-  width: 380px;
+  top: 38%;
+  left: 24%;
+  height: 56%;
+  width: 20%;
 }
 
 .rogue {
 	position: absolute;
-	top: 230px;
-  left: 898px;
-  right: 4px;
-  height: 500px;
-  width: 380px;
+	top: 30%;
+  right: 5%;
+  height: 70%;
+  width: 20%;
 }
 
 .wizast {
 	position: absolute;
-	top: 490px;
-  left: 720px;
-  right: 4px;
-  height: 230px;
-  width: 300px;
+	top: 68%;
+  right: 34%;
+  height: 23%;
+  width: 20%;
    border-style: solid;
      border-width: 1px;
     background-image: linear-gradient(#00334d, #262626);
@@ -214,12 +201,11 @@ canvas {
 }
 
 .knightst {
-	position: absolute;
-	top: 490px;
-  left: 269px;
-  right: 4px;
-  height: 230px;
-  width: 300px;
+  position: absolute;
+	top: 68%;
+  right: 60%;
+  height: 23%;
+  width: 20%;
    border-style: solid;
      border-width: 1px;
     background-image: linear-gradient(#00334d, #262626);
@@ -231,17 +217,10 @@ canvas {
 
 .roguest {
 	position: absolute;
-	top: 490px;
-  left: 1190px;
-  right: 4px;
-  height: 230px;
-  width: 300px;
-
-  top: 400px;
-  left: 1190px;
-  right: 4px;
-  height: 230px;
-  width: 300px;
+	top: 68%;
+  right: 8%;
+  height: 23%;
+  width: 20%;
    border-style: solid;
      border-width: 1px;
     background-image: linear-gradient(#00334d, #262626);
@@ -253,29 +232,9 @@ canvas {
 }
 
 .knightnm {
-		position: absolute;
-	top: 400px;
-  left: 269px;
-  right: 4px;
-   border-style: solid;
-     border-width: 1px;
-    background-image: linear-gradient(#00334d, #262626);
-	font-size: 30px;
-	     font-family: 'Aclonica';
-		    padding-top: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-   text-align: center;
-     margin-right: 950px;
-  margin-left: 20px;
-}
-
-.wizanm {
-		position: absolute;
-	top: 400px;
-  left: 720px;
-  right: 4px;
+  position: absolute;
+  top: 56%;
+  right: 72%;
    border-style: solid;
      border-width: 1px;
     background-image: linear-gradient(#00334d, #262626);
@@ -286,29 +245,46 @@ canvas {
   padding-bottom: 10px;
   padding-left: 10px;
    text-align: center;
-     margin-right: 500px;
-  margin-left: 15px;
+    
 }
 
-.roguenm {
+.wizanm {
 		position: absolute;
-		top: 400px;
-  left: 1180px;
-  right: 4px;
+  top: 56%;
+  right: 45%;
    border-style: solid;
      border-width: 1px;
     background-image: linear-gradient(#00334d, #262626);
 	font-size: 30px;
 	     font-family: 'Aclonica';
-		    padding-top: 10px;
+		      padding-top: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
    text-align: center;
-     margin-right: 28px;
-  margin-left: 20px;
+     
+}
+
+.roguenm {
+  position: absolute;
+  top: 56%;
+  right: 19%;
+   border-style: solid;
+     border-width: 1px;
+    background-image: linear-gradient(#00334d, #262626);
+	font-size: 30px;
+	     font-family: 'Aclonica';
+		      padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+   text-align: center;
+     
     
 }
+
+
+
 
 ul.a {
   position: absolute;
@@ -366,7 +342,7 @@ ul.a {
 
 }
 
-#powerbar {
+#bolt {
 	top:4%;
   height: 5%;
   width: 100%;
