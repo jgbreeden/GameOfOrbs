@@ -395,8 +395,19 @@ function showHealth() {
 }
 function showInv() {
 	var text = "";
-	for (t = 0; t < player.inventory.length; t++){
-		text += "<li>" + player.inventory[t].name + "</li>";
+	let tools = [];
+	let count = [];
+	for(s = 0; s < player.inventory.length; s++){
+		let pos = tools.indexOf(player.inventory[s].name); 
+		if (pos == -1){
+			tools.push(player.inventory[s].name);
+			count.push(1);
+		} else {
+			count[pos]++;
+		}
+	}
+	for (t = 0; t < tools.length; t++){
+		text += "<li>" + count[t] + ':' + tools[t] + "</li>";
 
 	}
 	tlset = document.getElementById("tlset");
