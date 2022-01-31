@@ -1,11 +1,11 @@
 [
 	{"boss": "King Bear", "inventory1": 
 		{"name": "orb", "type": "orb", "power": false, "healing": false, "color": "brown", "xcolnum": 9, "ycolnum": 6}
-	, "power": 1, "defens": 1, "maxhp": 1, "xcolnum": 1, "ycolnum": 2},
+	, "power": 35, "defens": 12, "maxhp": 175, "xcolnum": 1, "ycolnum": 2},
 	{"boss": "Sarcophagus", "inventory1": 
 		{"name": "orb", "type": "orb", "power": false, "healing": false, "color": "brown", "xcolnum": 9, "ycolnum": 6}
-	, "power": 1, "defens": 1, "maxhp": 1, "xcolnum": 0, "ycolnum": 0},
+	, "power": 10, "defens": 20, "maxhp": 300, "xcolnum": 0, "ycolnum": 0},
 	{"boss": "Robo", "inventory1": 
 		{"name": "orb", "type": "orb", "power": false, "healing": false, "color": "brown", "xcolnum": 9, "ycolnum": 6}
-	, "power": 1, "defens": 1, "maxhp": 1, "xcolnum": 0, "ycolnum": 1}
+	, "power": 15, "defens": 111, "maxhp": 10, "xcolnum": 0, "ycolnum": 1}
 ]
