@@ -11,6 +11,8 @@ var toolset = [];
 var enemieslist = [];
 var playerlist = [];
 var hp = {};
+var df = {};
+var bolt = {};
 var bossp = 1;
 var toolTime = 1;
 bg.src = "images/desert.png";
@@ -19,7 +21,11 @@ var obsticallist = [];
 var inventorysnap = [];
 function start(){
     hp = document.getElementById("hp");
+	df = document.getElementById("df");
+	bolt = document.getElementById("bolt")
 	hp.value = 0;
+	df.value = 0;
+	bolt.value = 0;
 	document.getElementById("intro").style.display = "none";
 	document.getElementById("character").style.display = "block";
 	ss.src = "images/items.gif";
@@ -134,11 +140,18 @@ function update () {
 				if(player.health > player.maxhp){
 					player.health = player.maxhp;
 				}
-				hp.value = player.health
+				
 			} else {
 				player.inventory.push(game.tools[i]);
+				if (game.tools[i].type == "Weapon" || game.tools[i].type == "Magic"){
+					player.power += game.tools[i].power;
+				}
+				if (game.tools[i].type == "Armor" || game.tools[i].type == "Magic"){
+					player.defens += game.tools[i].power;
+				}
 				showInv();
 			}
+			showHealth();
 			game.tools.splice(i, 1);
 			break;
 		}
@@ -392,12 +405,24 @@ function MainSet(){
 }
 function showHealth() {
 	hp.value = player.health;
-	
+	df.value = player.defens;
+	bolt.value = player.power;
 }
 function showInv() {
 	var text = "";
-	for (t = 0; t < player.inventory.length; t++){
-		text += "<li>" + player.inventory[t].name + "</li>";
+	let tools = [];
+	let count = [];
+	for(s = 0; s < player.inventory.length; s++){
+		let pos = tools.indexOf(player.inventory[s].name); 
+		if (pos == -1){
+			tools.push(player.inventory[s].name);
+			count.push(1);
+		} else {
+			count[pos]++;
+		}
+	}
+	for (t = 0; t < tools.length; t++){
+		text += "<li>" + count[t] + ':' + tools[t] + "</li>";
 
 	}
 	tlset = document.getElementById("tlset");
