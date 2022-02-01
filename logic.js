@@ -190,6 +190,7 @@ function bBattle(){
 		pdamage = 1;
 	}
 	player.health -= pdamage;
+	showHealth();
 	if (player.health <= 0){
 		reset1();
 		player.bossBattle = false;
@@ -458,8 +459,8 @@ function moving(){
 	for (let p = 0; p < player.inventory.length; p++){
 		player.OGinventory.push(player.inventory[p]);
 	}
-	bossp += bossp + bossp/2;
-	toolTime += 1;
+	bossp += bossp + .5;
+	toolTime += 10;
 	game.obsticals = [];
 	game.tools = [];
 	game.enemies = [];
