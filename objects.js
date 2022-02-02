@@ -121,6 +121,10 @@ class Player extends Character {
 		this.bossBattle = false;
 		this.dust = 1;
 		this.OGinventory = [];
+		this.atktot = 0;
+		this.deftot = 0;
+
+
 	}
 	update(){
 		this.checkkeys();
@@ -179,6 +183,20 @@ class Player extends Character {
 			}
 		}
 
+	}
+	setdef(){
+		this.atktot = this.power;
+		for (let g = 0; g < this.inventory.length; g++){
+			if (this.inventory[g].type == "Weapon" || this.inventory[g].type == "Magic"){
+				this.atktot += this.inventory[g].power;
+			}
+		}
+		this.deftot = this.power;
+		for (let g = 0; g < this.inventory.length; g++){
+			if (this.inventory[g].type == "Armor" || this.inventory[g].type == "Magic"){
+				this.deftot += this.inventory[g].power;
+			}
+		}
 	}
 }
 class Enemis extends Character {

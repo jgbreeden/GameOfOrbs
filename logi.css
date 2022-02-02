@@ -288,7 +288,7 @@ border-style: inset;
 
 ul.a {
   position: absolute;
-  top: 18%;
+  top: 11%;
  left: 76%;
   right: 1%;
  
@@ -353,16 +353,16 @@ ul.a {
 
 #tlset {
   position: absolute;
-  top: 60%;
+  top: 56%;
   left: 76%;
   right: 1%;
   margin-left: 5%;
 padding-top: 4%;
-padding-right: 3%;
+padding-right: 1%;
 padding-bottom: 1%;
 padding-left: 4%;
   font-family: 'Aclonica';
-  font-size: 100%;
+  font-size: 90%;
   letter-spacing: 3px;
   text-shadow: 2px 2px 3px #999999;
   color: #4d0000;
@@ -374,7 +374,7 @@ padding-left: 4%;
 
 .invtitle {
   position: absolute;
-  top: 64%;
+  top: 60%;
   left: 86%;
   right: 1%;
   font-family: 'Aclonica';

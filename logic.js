@@ -91,6 +91,7 @@ function main() {
 	for (let j = 0; j < playerlist[p].inventory.length; j++){
 		player.OGinventory.push(new Tool (playerlist[p].inventory[j].name, playerlist[p].inventory[j].type, playerlist[p].inventory[j].power, playerlist[p].inventory[j].healing, playerlist[p].inventory[j].color, playerlist[p].inventory[j].xcolnum, playerlist[p].inventory[j].ycolnum));
 	}
+	player.setdef();
 	MainSet();
 }
 
@@ -144,10 +145,10 @@ function update () {
 			} else {
 				player.inventory.push(game.tools[i]);
 				if (game.tools[i].type == "Weapon" || game.tools[i].type == "Magic"){
-					player.power += game.tools[i].power;
+					player.atktot += game.tools[i].power;
 				}
 				if (game.tools[i].type == "Armor" || game.tools[i].type == "Magic"){
-					player.defens += game.tools[i].power;
+					player.deftot += game.tools[i].power;
 				}
 				showInv();
 			}
@@ -181,24 +182,13 @@ function stbat(){
 	player.incombat = pcom;
 }
 function bBattle(){
-	var atktot = player.power;
-	for (g = 0; g < player.inventory.length; g++){
-		if (player.inventory[g].type == "Weapon" || player.inventory[g].type == "Magic"){
-			atktot += player.inventory[g].power;
-		}
-	}
-	var deftot = player.power;
-	for (g = 0; g < player.inventory.length; g++){
-		if (player.inventory[g].type == "Armor" || player.inventory[g].type == "Magic"){
-			deftot += player.inventory[g].power;
-		}
-	}
-	var bdamage = atktot - game.boss.defens
+	
+	var bdamage = player.atktot - game.boss.defens
 	if (bdamage <= 0){
 		bdamage = 1;
 	}
 	game.boss.health -= bdamage;
-	var pdamage = game.boss.power - deftot
+	var pdamage = game.boss.power - player.deftot
 	if (pdamage <= 0){
 		pdamage = 1;
 	}
@@ -257,22 +247,11 @@ function next_aria(){
 	}*/
 }
 function battle(){
-	var atktot = player.power;
-	for (g = 0; g < player.inventory.length; g++){
-		if (player.inventory[g].type == "Weapon" || player.inventory[g].type == "Magic"){
-			atktot += player.inventory[g].power;
-		}
-	}
-	var deftot = player.power;
-	for (g = 0; g < player.inventory.length; g++){
-		if (player.inventory[g].type == "Armor" || player.inventory[g].type == "Magic"){
-			deftot += player.inventory[g].power;
-		}
-	}
+	
 	
 	for (i = 0; i < game.enemies.length; i++){
 		if (game.enemies[i].incombat){
-			var damage = atktot - game.enemies[i].defens;
+			var damage = player.atktot - game.enemies[i].defens;
 			if (damage <= 0){
 				damage = 1;
 			}
@@ -284,7 +263,7 @@ function battle(){
 		}
 	}
 	for (i = 0; i < game.enemies.length; i++){
-		var damage = game.enemies[i].power - deftot;
+		var damage = game.enemies[i].power - player.deftot;
 		if (damage <= 0){
 			damage = 1;
 		}
@@ -378,6 +357,7 @@ function MainSet(){
 	for (let j = 0; j < player.OGinventory.length; j++){
 		player.inventory.push(player.OGinventory[j]);
 	}
+	player.setdef();
 	showInv()
 	for (let h = 0; h < obsticallist[b].obsticles.length; h++){
 		game.obsticals.push(new Obstacles (obsticallist[b].obsticles[h].x, obsticallist[b].obsticles[h].y, obsticallist[b].obsticles[h].xcord, obsticallist[b].obsticles[h].ycord, obsticallist[b].obsticles[h].xgrab, obsticallist[b].obsticles[h].ygrab));
@@ -404,20 +384,22 @@ function MainSet(){
 }
 function showHealth() {
 	hp.value = player.health;
-	df.value = player.defens;
-	bolt.value = player.power;
+	df.value = player.defens + player.deftot;
+	bolt.value = player.power + player.atktot;
 }
 function showInv() {
 	var text = "";
 	let tools = [];
 	let count = [];
 	for(s = 0; s < player.inventory.length; s++){
-		let pos = tools.indexOf(player.inventory[s].name); 
-		if (pos == -1){
-			tools.push(player.inventory[s].name);
-			count.push(1);
-		} else {
-			count[pos]++;
+		if (player.inventory[s].type != "orb"){
+			let pos = tools.indexOf(player.inventory[s].name); 
+			if (pos == -1){
+				tools.push(player.inventory[s].name);
+				count.push(1);
+			} else {
+				count[pos]++;
+			}
 		}
 	}
 	for (t = 0; t < tools.length; t++){
