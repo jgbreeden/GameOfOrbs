@@ -256,6 +256,9 @@ function next_aria(){
 		game.ctx.fillText("the forest", (game.canvas.width/2 - 20), 20, 200);
 		game.ctx.fillText("the desert", (game.canvas.width/2 - 20), game.canvas.height, 200);
 	}*/
+	if (game.ariaf && game.ariad && game.ariaa){
+		game.ctx.fillText("the dark castle", 20, game.canvas.height/2, 200);
+	}
 }
 function battle(){
 	var atktot = player.power;
@@ -477,7 +480,7 @@ function setScene(label){
 				console.log("bottom")
 			}
 		}
-	} 
+	}
 }
 function moving(){
 	player.OGinventory = [];
