@@ -193,6 +193,7 @@ function bBattle(){
 		pdamage = 1;
 	}
 	player.health -= pdamage;
+	showHealth();
 	if (player.health <= 0){
 		reset1();
 		player.bossBattle = false;
@@ -245,6 +246,9 @@ function next_aria(){
 		game.ctx.fillText("the forest", (game.canvas.width/2 - 20), 20, 200);
 		game.ctx.fillText("the desert", (game.canvas.width/2 - 20), game.canvas.height, 200);
 	}*/
+	if (game.ariaf && game.ariad && game.ariaa){
+		game.ctx.fillText("the dark castle", 20, game.canvas.height/2, 200);
+	}
 }
 function battle(){
 	
@@ -458,15 +462,15 @@ function setScene(label){
 				console.log("bottom")
 			}
 		}
-	} 
+	}
 }
 function moving(){
 	player.OGinventory = [];
 	for (let p = 0; p < player.inventory.length; p++){
 		player.OGinventory.push(player.inventory[p]);
 	}
-	bossp += bossp + bossp/2;
-	toolTime += 1;
+	bossp += bossp + .5;
+	toolTime += 10;
 	game.obsticals = [];
 	game.tools = [];
 	game.enemies = [];
