@@ -57,6 +57,8 @@ function setplace(plc){
 		bg.src = "images/forest.png";
 	} else if (plc == "artic"){
 		bg.src = "images/artic.png";
+	} else if (plc == "home"){
+		bg.src = "images/bkmap1.png"
 	}
 }
 
