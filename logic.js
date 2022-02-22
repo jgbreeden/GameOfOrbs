@@ -420,21 +420,18 @@ function setScene(label){
 			if(!game.ariaa){
 				setplace("artic")
 				document.getElementById("place").value = "artic"
-				moving()
 				console.log("top")
 			}
 		} else if (boss == "forest"){
 			if(!game.ariad){
 				setplace("desert")
 				document.getElementById("place").value = "desert"
-				moving()
 				console.log("top")
 			}
 		} else if (boss == "artic"){
 			if(!game.ariaf){
 				setplace("forest")
 				document.getElementById("place").value = "forest"
-				moving()
 				console.log("top")
 			}
 		}
@@ -444,25 +441,28 @@ function setScene(label){
 			if(!game.ariaf){
 				setplace("forest")
 				document.getElementById("place").value = "forest"
-				moving()
 				console.log("bottom")
 			}
 		} else if (boss == "forest"){
 			if(!game.ariaa){
 				setplace("artic")
 				document.getElementById("place").value = "artic"
-				moving()
 				console.log("bottom")
 			}
 		} else if (boss == "artic"){
 			if(!game.ariad){
 				setplace("desert")
 				document.getElementById("place").value = "desert"
-				moving()
 				console.log("bottom")
 			}
 		}
 	}
+	else if (label == "left"){
+		if(game.ariad && game.ariaa && game.ariaf){
+			setplace("home")
+		}
+	}
+	moving()
 }
 function moving(){
 	player.OGinventory = [];
