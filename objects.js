@@ -181,7 +181,7 @@ class Player extends Character {
 			else if (this.y > game.canvas.height - 21){
 				setScene("bottom");
 		}
-		else if (this.y > game.canvas.height / 2 - 10 && this.y < game.canvas.height / 2 + 10 && this.y < 5){
+		else if (this.y > game.canvas.height / 2 - 10 && this.y < game.canvas.height / 2 + 10 && this.x < 5){
 				setScene("left");
 			}
 		}
